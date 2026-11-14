@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bazan Đỏ - Cà Phê Nguyên Bản Đại Ngàn</title>
+    <title>Bazan Đỏ - Cà Phê Nguyên Bản Đại Ngàn | Đặt Hàng Trực Tuyến</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -24,11 +24,7 @@
                         bazan: {
                             800: '#3D1C10',
                             900: '#231008',
-                            950: '#150A05',
-                        },
-                        ochre: {
-                            500: '#C86D3B',
-                            600: '#A44F22',
+                            950: '#140804',
                         },
                         amberGlow: {
                             400: '#FBBF24',
@@ -42,29 +38,35 @@
     </script>
     <style>
         .wood-texture {
-            background-color: #150A05;
-            background-image: radial-gradient(rgba(200, 109, 59, 0.12) 1px, transparent 1px);
+            background-color: #120703;
+            background-image: radial-gradient(rgba(217, 119, 6, 0.12) 1px, transparent 1px);
             background-size: 24px 24px;
         }
         .hero-banner {
-            background: linear-gradient(180deg, rgba(21, 10, 5, 0.5) 0%, rgba(21, 10, 5, 0.95) 100%),
+            background: linear-gradient(180deg, rgba(18, 7, 3, 0.5) 0%, rgba(18, 7, 3, 0.98) 100%),
                         url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
         }
         .glass-box {
-            background: rgba(43, 21, 12, 0.78);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(200, 109, 59, 0.25);
+            background: rgba(35, 16, 8, 0.82);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(217, 119, 6, 0.22);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 </head>
 <body class="wood-texture text-amber-50 font-sans min-h-screen selection:bg-amber-700 selection:text-white flex flex-col justify-between">
 
-    <!-- 1. ĐẦU TRANG (Header & Hero) -->
-    <header class="relative hero-banner pt-12 pb-24 md:pt-20 md:pb-36 border-b border-amber-900/40">
-        <!-- Navigation bar -->
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between mb-16 md:mb-24">
+    <!-- 1. ĐẦU TRANG & THANH ĐIỀU HƯỚNG -->
+    <header class="fixed top-0 left-0 right-0 z-40 glass-box border-b border-amber-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <span class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-600 to-amber-900 flex items-center justify-center text-white shadow-lg shadow-amber-950/60 border border-amber-500/40">
+                <span class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-600 to-amber-900 flex items-center justify-center text-white shadow-lg border border-amber-500/40">
                     <i data-lucide="coffee" class="w-6 h-6"></i>
                 </span>
                 <div>
@@ -73,17 +75,23 @@
                 </div>
             </div>
 
-            <nav class="flex items-center space-x-6 text-sm font-medium">
-                <a href="#about" class="text-amber-100/80 hover:text-amber-400 transition hidden sm:inline">Về Quán</a>
-                <a href="#menu" class="text-amber-100/80 hover:text-amber-400 transition hidden sm:inline">Thực Đơn</a>
-                <a href="#contact" class="text-amber-100/80 hover:text-amber-400 transition hidden sm:inline">Liên Hệ</a>
-                <a href="#menu" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-white font-semibold text-xs tracking-wider uppercase shadow-md transition">
-                    Xem thực đơn
-                </a>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#about" class="text-amber-100/80 hover:text-amber-400 transition">Về Quán</a>
+                <a href="#menu" class="text-amber-100/80 hover:text-amber-400 transition">Thực Đơn</a>
+                <a href="#contact" class="text-amber-100/80 hover:text-amber-400 transition">Liên Hệ</a>
             </nav>
-        </div>
 
-        <!-- Hero Content -->
+            <!-- Nút Giỏ Hàng Nổi Bật -->
+            <button onclick="toggleCartDrawer()" class="relative px-4 py-2.5 rounded-full bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-white font-bold text-xs uppercase tracking-wider flex items-center space-x-2.5 shadow-lg shadow-amber-950/60 transition">
+                <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+                <span class="hidden sm:inline">Giỏ Hàng</span>
+                <span id="cart-badge" class="w-5 h-5 rounded-full bg-red-600 text-white flex items-center justify-center text-[10px] font-black">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative hero-banner pt-36 pb-20 md:pt-48 md:pb-32 border-b border-amber-900/40">
         <div class="max-w-4xl mx-auto px-4 text-center">
             <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-amber-950/70 border border-amber-500/30 text-amber-300 text-xs font-semibold mb-6">
                 <i data-lucide="mountain" class="w-4 h-4 text-amber-400"></i>
@@ -98,205 +106,307 @@
                 "Nơi giọt đắng thảo nguyên đánh thức tâm hồn bạn giữa đại ngàn lộng gió."
             </p>
 
-            <div>
+            <div class="flex flex-wrap justify-center gap-4">
                 <a href="#menu" class="inline-flex items-center space-x-3 px-8 py-4 rounded-xl bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700 hover:from-amber-500 hover:to-orange-500 text-white text-base font-bold shadow-xl shadow-amber-950/70 transition transform hover:-translate-y-0.5">
-                    <span>Xem thực đơn</span>
+                    <span>Xem thực đơn & Đặt món</span>
                     <i data-lucide="arrow-down" class="w-5 h-5"></i>
                 </a>
+                <button onclick="toggleCartDrawer()" class="glass-box px-6 py-4 rounded-xl text-amber-200 hover:bg-amber-900/40 text-base font-bold transition flex items-center space-x-2">
+                    <i data-lucide="shopping-bag" class="w-5 h-5 text-amber-400"></i>
+                    <span>Xem giỏ hàng (<span id="hero-cart-total">0đ</span>)</span>
+                </button>
             </div>
         </div>
-    </header>
+    </section>
 
     <!-- 2. GIỚI THIỆU NGẮN VỀ QUÁN -->
-    <section id="about" class="py-20 relative">
+    <section id="about" class="py-16 relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6">
-            <div class="glass-box p-8 sm:p-12 rounded-3xl relative overflow-hidden border border-amber-600/30 shadow-2xl">
-                <div class="absolute -top-12 -right-12 w-48 h-48 bg-amber-600/10 rounded-full blur-3xl pointer-events-none"></div>
-                
-                <div class="flex items-center space-x-3 mb-6">
-                    <span class="h-px w-10 bg-amber-500"></span>
-                    <span class="text-xs uppercase tracking-widest font-bold text-amber-400">Câu Chuyện Của Quán</span>
+            <div class="glass-box p-8 sm:p-10 rounded-3xl relative overflow-hidden border border-amber-600/30 shadow-2xl">
+                <div class="flex items-center space-x-3 mb-4">
+                    <span class="h-px w-8 bg-amber-500"></span>
+                    <span class="text-xs uppercase tracking-widest font-bold text-amber-400">Câu Chuyện Bazan Đỏ</span>
                 </div>
-
-                <h2 class="text-2xl sm:text-3xl font-serif font-bold text-white mb-6 leading-snug">
+                <h2 class="text-2xl sm:text-3xl font-serif font-bold text-white mb-4 leading-snug">
                     Hồn Của Đất Rừng Trong Từng Tách Cà Phê
                 </h2>
-
-                <p class="text-base sm:text-lg text-amber-100/90 leading-relaxed font-light">
+                <p class="text-base text-amber-100/90 leading-relaxed font-light">
                     Tọa lạc giữa triền đồi đất đỏ bazan màu mỡ của đại ngàn Tây Nguyên, <strong>Bazan Đỏ</strong> là không gian mộc mạc gìn giữ tinh hoa của những hạt cà phê Robusta và Arabica chín cây được hái thủ công và rang mộc nguyên bản. Đến với quán, bạn không chỉ thưởng thức hương vị cà phê đậm đà thuần chất mà còn được thả hồn vào thanh âm cồng chiêng, tiếng thông reo và làn gió cao nguyên trong lành.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- 3. THỰC ĐƠN 6 MÓN -->
-    <section id="menu" class="py-20 bg-bazan-950/80 border-y border-amber-900/40">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-xs uppercase tracking-widest font-bold text-amber-400">Hương Vị Đặc Trưng</span>
+    <!-- 3. THỰC ĐƠN TƯƠNG TÁC & PHÂN LOẠI DANH MỤC -->
+    <section id="menu" class="py-16 border-t border-amber-900/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-xs uppercase tracking-widest font-bold text-amber-400">Trải Nghiệm Hương Vị Theo Gu Riêng</span>
                 <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mt-2">Thực Đơn Bazan Đỏ</h2>
+                <p class="text-xs sm:text-sm text-amber-200/70 mt-2">Chọn món để tùy chỉnh size, đường đá, loại sữa và topping yêu thích của bạn.</p>
                 <div class="w-16 h-1 bg-amber-600 mx-auto mt-4 rounded-full"></div>
             </div>
 
-            <!-- Grid 6 món -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                <!-- Món 1 -->
-                <div class="glass-box rounded-2xl overflow-hidden border border-amber-700/30 hover:border-amber-500/60 transition duration-300 flex flex-col justify-between group">
-                    <div class="h-52 overflow-hidden relative">
-                        <img src="images/phin_robusta.jpg" alt="Cà Phê Phin Robusta Buôn Ma Thuột" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-bazan-950/90 via-transparent to-transparent"></div>
-                        <span class="absolute bottom-3 left-4 p-2 rounded-lg bg-amber-950/80 text-amber-400 border border-amber-600/30">
-                            <i data-lucide="coffee" class="w-5 h-5"></i>
-                        </span>
-                        <span class="absolute bottom-3 right-4 text-base font-bold text-amber-400 font-serif bg-black/60 px-3 py-1 rounded-full border border-amber-500/30">35.000 VNĐ</span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold font-serif text-white mb-2">Cà Phê Phin Robusta Buôn Ma Thuột</h3>
-                        <p class="text-sm text-amber-200/75 leading-relaxed">Cà phê phin truyền thống rang mộc, vị đắng đậm đà quyện chút hậu ngọt tự nhiên khó phai.</p>
-                    </div>
-                </div>
+            <!-- Category Tabs Selector -->
+            <div class="flex overflow-x-auto space-x-2.5 pb-4 mb-10 justify-start sm:justify-center no-scrollbar" id="category-bar">
+                <button onclick="filterCategory('all')" class="cat-btn active px-5 py-2.5 rounded-full text-xs font-bold whitespace-nowrap bg-amber-600 text-white shadow-md transition">Tất Cả</button>
+                <button onclick="filterCategory('traditional')" class="cat-btn px-5 py-2.5 rounded-full text-xs font-bold whitespace-nowrap glass-box text-amber-300 hover:bg-amber-800/40 transition">☕ Cà Phê Truyền Thống</button>
+                <button onclick="filterCategory('machine')" class="cat-btn px-5 py-2.5 rounded-full text-xs font-bold whitespace-nowrap glass-box text-amber-300 hover:bg-amber-800/40 transition">⚡ Cà Phê Máy</button>
+                <button onclick="filterCategory('tea')" class="cat-btn px-5 py-2.5 rounded-full text-xs font-bold whitespace-nowrap glass-box text-amber-300 hover:bg-amber-800/40 transition">🍃 Trà Trái Cây</button>
+                <button onclick="filterCategory('blended')" class="cat-btn px-5 py-2.5 rounded-full text-xs font-bold whitespace-nowrap glass-box text-amber-300 hover:bg-amber-800/40 transition">🧊 Đá Xay Tuyết</button>
+                <button onclick="filterCategory('bakery')" class="cat-btn px-5 py-2.5 rounded-full text-xs font-bold whitespace-nowrap glass-box text-amber-300 hover:bg-amber-800/40 transition">🥐 Bánh & Ăn Kèm</button>
+            </div>
 
-                <!-- Món 2 -->
-                <div class="glass-box rounded-2xl overflow-hidden border border-amber-700/30 hover:border-amber-500/60 transition duration-300 flex flex-col justify-between group">
-                    <div class="h-52 overflow-hidden relative">
-                        <img src="images/cafe_muoi.jpg" alt="Cà Phê Muối Bazan" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-bazan-950/90 via-transparent to-transparent"></div>
-                        <span class="absolute bottom-3 left-4 p-2 rounded-lg bg-amber-950/80 text-amber-400 border border-amber-600/30">
-                            <i data-lucide="sparkles" class="w-5 h-5"></i>
-                        </span>
-                        <span class="absolute bottom-3 right-4 text-base font-bold text-amber-400 font-serif bg-black/60 px-3 py-1 rounded-full border border-amber-500/30">45.000 VNĐ</span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold font-serif text-white mb-2">Cà Phê Muối Bazan</h3>
-                        <p class="text-sm text-amber-200/75 leading-relaxed">Lớp kem muối béo mặn mượt mà kết hợp hài hòa cùng vị cà phê đắng nồng của đất đỏ.</p>
-                    </div>
-                </div>
-
-                <!-- Món 3 -->
-                <div class="glass-box rounded-2xl overflow-hidden border border-amber-700/30 hover:border-amber-500/60 transition duration-300 flex flex-col justify-between group">
-                    <div class="h-52 overflow-hidden relative">
-                        <img src="images/cold_brew.jpg" alt="Arabica Cầu Đất Ủ Lạnh (Cold Brew)" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-bazan-950/90 via-transparent to-transparent"></div>
-                        <span class="absolute bottom-3 left-4 p-2 rounded-lg bg-amber-950/80 text-amber-400 border border-amber-600/30">
-                            <i data-lucide="sun" class="w-5 h-5"></i>
-                        </span>
-                        <span class="absolute bottom-3 right-4 text-base font-bold text-amber-400 font-serif bg-black/60 px-3 py-1 rounded-full border border-amber-500/30">48.000 VNĐ</span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold font-serif text-white mb-2">Arabica Cầu Đất Ủ Lạnh (Cold Brew)</h3>
-                        <p class="text-sm text-amber-200/75 leading-relaxed">Ủ lạnh 16 tiếng mang lại hương thơm hoa quả rừng thoang thoảng và vị chua thanh tao nhã.</p>
-                    </div>
-                </div>
-
-                <!-- Món 4 -->
-                <div class="glass-box rounded-2xl overflow-hidden border border-amber-700/30 hover:border-amber-500/60 transition duration-300 flex flex-col justify-between group">
-                    <div class="h-52 overflow-hidden relative">
-                        <img src="images/bac_xiu.jpg" alt="Bạc Xỉu Sữa Hạt Kơ-Nia" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-bazan-950/90 via-transparent to-transparent"></div>
-                        <span class="absolute bottom-3 left-4 p-2 rounded-lg bg-amber-950/80 text-amber-400 border border-amber-600/30">
-                            <i data-lucide="milk" class="w-5 h-5"></i>
-                        </span>
-                        <span class="absolute bottom-3 right-4 text-base font-bold text-amber-400 font-serif bg-black/60 px-3 py-1 rounded-full border border-amber-500/30">40.000 VNĐ</span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold font-serif text-white mb-2">Bạc Xỉu Sữa Hạt Kơ-Nia</h3>
-                        <p class="text-sm text-amber-200/75 leading-relaxed">Hương cà phê dịu nhẹ hòa cùng sữa hạt kơ-nia rừng giã nhuyễn thơm bùi béo ngậy.</p>
-                    </div>
-                </div>
-
-                <!-- Món 5 -->
-                <div class="glass-box rounded-2xl overflow-hidden border border-amber-700/30 hover:border-amber-500/60 transition duration-300 flex flex-col justify-between group">
-                    <div class="h-52 overflow-hidden relative">
-                        <img src="images/tra_cascara.jpg" alt="Trà Cascara Hoa Cà Phê" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-bazan-950/90 via-transparent to-transparent"></div>
-                        <span class="absolute bottom-3 left-4 p-2 rounded-lg bg-amber-950/80 text-amber-400 border border-amber-600/30">
-                            <i data-lucide="flower" class="w-5 h-5"></i>
-                        </span>
-                        <span class="absolute bottom-3 right-4 text-base font-bold text-amber-400 font-serif bg-black/60 px-3 py-1 rounded-full border border-amber-500/30">42.000 VNĐ</span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold font-serif text-white mb-2">Trà Cascara Hoa Cà Phê</h3>
-                        <p class="text-sm text-amber-200/75 leading-relaxed">Trà ủ từ vỏ quả cà phê chín mọng ngọt thanh mát dịu, giàu chất chống oxy hóa.</p>
-                    </div>
-                </div>
-
-                <!-- Món 6 -->
-                <div class="glass-box rounded-2xl overflow-hidden border border-amber-700/30 hover:border-amber-500/60 transition duration-300 flex flex-col justify-between group">
-                    <div class="h-52 overflow-hidden relative">
-                        <img src="images/cacao_nong.jpg" alt="Cacao Nóng Lắk Mật Ong Rừng" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-bazan-950/90 via-transparent to-transparent"></div>
-                        <span class="absolute bottom-3 left-4 p-2 rounded-lg bg-amber-950/80 text-amber-400 border border-amber-600/30">
-                            <i data-lucide="flame" class="w-5 h-5"></i>
-                        </span>
-                        <span class="absolute bottom-3 right-4 text-base font-bold text-amber-400 font-serif bg-black/60 px-3 py-1 rounded-full border border-amber-500/30">50.000 VNĐ</span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold font-serif text-white mb-2">Cacao Nóng Lắk Mật Ong Rừng</h3>
-                        <p class="text-sm text-amber-200/75 leading-relaxed">Cacao nguyên chất vùng Đắk Lắk ngọt đằm nhờ mật ong rừng, sưởi ấm những chiều se lạnh.</p>
-                    </div>
-                </div>
+            <!-- Products Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="products-grid">
+                <!-- Javascript will render all products here -->
             </div>
         </div>
     </section>
 
-    <!-- 4. FORM LIÊN HỆ & ĐỂ LẠI LỜI NHẮN -->
-    <section id="contact" class="py-20">
+    <!-- 4. MODAL TÙY CHỈNH MÓN (CUSTOMIZATION POPUP) -->
+    <div id="customize-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="glass-box bg-[#1c0d07] border border-amber-600/40 rounded-3xl max-w-xl w-full max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8 relative">
+            <!-- Nút đóng -->
+            <button onclick="closeCustomizeModal()" class="absolute top-5 right-5 text-amber-300/80 hover:text-white p-2 rounded-full hover:bg-amber-900/50 transition">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+
+            <!-- Chi tiết món chọn -->
+            <div class="flex items-start space-x-4 mb-6 pb-6 border-b border-amber-900/50">
+                <img id="modal-img" src="" alt="" class="w-24 h-24 rounded-2xl object-cover border border-amber-700/50 shadow-md">
+                <div>
+                    <span id="modal-badge" class="inline-block text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full mb-1"></span>
+                    <h3 id="modal-name" class="text-xl sm:text-2xl font-serif font-bold text-white"></h3>
+                    <p id="modal-desc" class="text-xs text-amber-200/70 mt-1 line-clamp-2"></p>
+                    <div class="mt-2 text-lg font-bold text-amber-400 font-serif" id="modal-base-price"></div>
+                </div>
+            </div>
+
+            <!-- Nhóm Tùy Chọn: Size -->
+            <div class="mb-6">
+                <label class="block text-xs font-bold uppercase tracking-wider text-amber-300 mb-2.5 flex items-center justify-between">
+                    <span>1. Chọn Kích Cỡ (Size):</span>
+                    <span class="text-[11px] text-amber-400/80 lowercase">bắt buộc</span>
+                </label>
+                <div class="grid grid-cols-3 gap-2.5" id="size-options">
+                    <button type="button" onclick="selectSize('S', 0)" class="size-btn p-3 rounded-xl border border-amber-700/40 text-center hover:border-amber-500 transition">
+                        <div class="font-bold text-sm text-white">Size S</div>
+                        <div class="text-[11px] text-amber-300/70">Tiêu chuẩn</div>
+                    </button>
+                    <button type="button" onclick="selectSize('M', 6000)" class="size-btn active p-3 rounded-xl border border-amber-500 bg-amber-600/30 text-center transition">
+                        <div class="font-bold text-sm text-amber-300">Size M</div>
+                        <div class="text-[11px] text-amber-200">+6.000đ</div>
+                    </button>
+                    <button type="button" onclick="selectSize('L', 12000)" class="size-btn p-3 rounded-xl border border-amber-700/40 text-center hover:border-amber-500 transition">
+                        <div class="font-bold text-sm text-white">Size L</div>
+                        <div class="text-[11px] text-amber-300/70">+12.000đ</div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Nhóm Tùy Chọn: Đường & Đá -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                <!-- Mức Đường -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-amber-300 mb-2">2. Lượng Đường:</label>
+                    <select id="opt-sugar" onchange="calculateModalTotal()" class="w-full px-3.5 py-2.5 rounded-xl bg-bazan-950 border border-amber-800/70 text-xs sm:text-sm text-amber-100 focus:outline-none focus:border-amber-500">
+                        <option value="100%">100% Đường (Chuẩn vị)</option>
+                        <option value="70%">70% Đường (Ngọt vừa)</option>
+                        <option value="50%" selected>50% Đường (Ít ngọt - Gu nhẹ)</option>
+                        <option value="30%">30% Đường (Rất ít ngọt)</option>
+                        <option value="0%">0% Đường (Nguyên bản không đường)</option>
+                    </select>
+                </div>
+
+                <!-- Mức Đá -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-amber-300 mb-2">3. Lượng Đá:</label>
+                    <select id="opt-ice" onchange="calculateModalTotal()" class="w-full px-3.5 py-2.5 rounded-xl bg-bazan-950 border border-amber-800/70 text-xs sm:text-sm text-amber-100 focus:outline-none focus:border-amber-500">
+                        <option value="100%">100% Đá (Mát lạnh)</option>
+                        <option value="70%" selected>70% Đá (Vừa phải)</option>
+                        <option value="50%">50% Đá (Ít đá)</option>
+                        <option value="0% (Không đá)">Không lấy đá</option>
+                        <option value="Đá riêng">Để đá riêng ly khác</option>
+                        <option value="Uống Nóng">Uống Nóng (Hot)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Nhóm Tùy Chọn: Loại Sữa -->
+            <div class="mb-6">
+                <label class="block text-xs font-bold uppercase tracking-wider text-amber-300 mb-2.5">4. Chọn Loại Sữa (Tùy chọn):</label>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2" id="milk-options">
+                    <label class="flex items-center space-x-2 p-2.5 rounded-xl bg-bazan-950/70 border border-amber-900/60 cursor-pointer text-xs">
+                        <input type="radio" name="milk" value="Sữa đặc truyền thống|0" checked onchange="calculateModalTotal()" class="text-amber-600 focus:ring-0">
+                        <span class="text-white">Sữa đặc cô gái</span>
+                    </label>
+                    <label class="flex items-center space-x-2 p-2.5 rounded-xl bg-bazan-950/70 border border-amber-900/60 cursor-pointer text-xs">
+                        <input type="radio" name="milk" value="Sữa tươi thanh trùng|5000" onchange="calculateModalTotal()" class="text-amber-600 focus:ring-0">
+                        <span class="text-white">Sữa tươi (+5k)</span>
+                    </label>
+                    <label class="flex items-center space-x-2 p-2.5 rounded-xl bg-bazan-950/70 border border-amber-900/60 cursor-pointer text-xs">
+                        <input type="radio" name="milk" value="Sữa hạt Kơ-nia rừng|10000" onchange="calculateModalTotal()" class="text-amber-600 focus:ring-0">
+                        <span class="text-white">Sữa Kơ-nia (+10k)</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Nhóm Tùy Chọn: Topping Thêm -->
+            <div class="mb-6">
+                <label class="block text-xs font-bold uppercase tracking-wider text-amber-300 mb-2.5">5. Thêm Topping Hảo Hạng:</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="topping-options">
+                    <label class="flex items-center justify-between p-2.5 rounded-xl bg-bazan-950/70 border border-amber-900/60 cursor-pointer text-xs">
+                        <span class="flex items-center space-x-2">
+                            <input type="checkbox" value="Kem Cheese Muối Bazan|10000" onchange="calculateModalTotal()" class="rounded text-amber-600">
+                            <span class="text-white">Kem Cheese Muối Bazan</span>
+                        </span>
+                        <span class="text-amber-400 font-semibold">+10.000đ</span>
+                    </label>
+                    <label class="flex items-center justify-between p-2.5 rounded-xl bg-bazan-950/70 border border-amber-900/60 cursor-pointer text-xs">
+                        <span class="flex items-center space-x-2">
+                            <input type="checkbox" value="Espresso Shot đậm vị|12000" onchange="calculateModalTotal()" class="rounded text-amber-600">
+                            <span class="text-white">Extra Espresso Shot</span>
+                        </span>
+                        <span class="text-amber-400 font-semibold">+12.000đ</span>
+                    </label>
+                    <label class="flex items-center justify-between p-2.5 rounded-xl bg-bazan-950/70 border border-amber-900/60 cursor-pointer text-xs">
+                        <span class="flex items-center space-x-2">
+                            <input type="checkbox" value="Trân Châu Ô Long Dẻo|8000" onchange="calculateModalTotal()" class="rounded text-amber-600">
+                            <span class="text-white">Trân Châu Ô Long</span>
+                        </span>
+                        <span class="text-amber-400 font-semibold">+8.000đ</span>
+                    </label>
+                    <label class="flex items-center justify-between p-2.5 rounded-xl bg-bazan-950/70 border border-amber-900/60 cursor-pointer text-xs">
+                        <span class="flex items-center space-x-2">
+                            <input type="checkbox" value="Hạt Kơ-nia Nướng Bùi|8000" onchange="calculateModalTotal()" class="rounded text-amber-600">
+                            <span class="text-white">Hạt Kơ-nia Nướng Rắc</span>
+                        </span>
+                        <span class="text-amber-400 font-semibold">+8.000đ</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Ô GHI CHÚ MÓN (Item Notes) -->
+            <div class="mb-6">
+                <label for="item-notes" class="block text-xs font-bold uppercase tracking-wider text-amber-300 mb-2 flex items-center space-x-1.5">
+                    <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
+                    <span>6. Ghi Chú Riêng Cho Ly Này:</span>
+                </label>
+                <input type="text" id="item-notes" placeholder="Ví dụ: Bỏ đá riêng, nhiều kem, không lấy ống hút nhựa..." class="w-full px-4 py-3 rounded-xl bg-bazan-950 border border-amber-900/80 text-xs sm:text-sm text-white placeholder-stone-500 focus:outline-none focus:border-amber-500 transition">
+            </div>
+
+            <!-- Footer Modal: Số Lượng & Nút Thêm Vào Giỏ -->
+            <div class="pt-4 border-t border-amber-900/50 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 bg-bazan-950 px-3 py-1.5 rounded-xl border border-amber-800/60">
+                    <button onclick="changeQuantity(-1)" class="w-8 h-8 rounded-lg bg-amber-900/50 hover:bg-amber-800 text-white font-bold flex items-center justify-center">-</button>
+                    <span id="modal-qty" class="w-8 text-center font-bold text-amber-300">1</span>
+                    <button onclick="changeQuantity(1)" class="w-8 h-8 rounded-lg bg-amber-900/50 hover:bg-amber-800 text-white font-bold flex items-center justify-center">+</button>
+                </div>
+
+                <button onclick="addItemToCart()" class="w-full sm:w-auto flex-1 py-3.5 px-6 rounded-xl bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700 hover:from-amber-500 hover:to-orange-500 text-white font-bold text-sm tracking-wide shadow-lg shadow-amber-950/60 transition flex items-center justify-between">
+                    <span>Thêm Vào Đơn Hàng</span>
+                    <span id="modal-final-price" class="font-serif font-black text-amber-200 text-base">0đ</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. NGĂN KÉO GIỎ HÀNG (CART SLIDE DRAWER) -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden justify-end">
+        <div class="w-full max-w-md bg-[#180a05] border-l border-amber-700/40 h-full flex flex-col justify-between shadow-2xl p-6 overflow-hidden">
+            <!-- Header Cart -->
+            <div class="flex items-center justify-between pb-4 border-b border-amber-900/50">
+                <div class="flex items-center space-x-2.5">
+                    <i data-lucide="shopping-bag" class="w-5 h-5 text-amber-400"></i>
+                    <h3 class="text-lg font-serif font-bold text-white">Đơn Hàng Của Bạn</h3>
+                </div>
+                <button onclick="toggleCartDrawer()" class="p-2 text-amber-300/80 hover:text-white rounded-full">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Danh sách món đã chọn -->
+            <div id="cart-items-container" class="flex-1 overflow-y-auto py-4 space-y-3.5 pr-1">
+                <!-- Javascript will render cart items here -->
+            </div>
+
+            <!-- Footer Giỏ hàng & Form Đặt hàng -->
+            <div class="pt-4 border-t border-amber-900/60 space-y-3">
+                <div class="flex justify-between items-center text-sm">
+                    <span class="text-amber-200/70">Tổng cộng (<span id="cart-item-count">0</span> món):</span>
+                    <span id="cart-grand-total" class="text-xl font-bold font-serif text-amber-400">0 VNĐ</span>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <input type="text" id="order-customer-name" placeholder="Họ tên người nhận món *" class="w-full px-3.5 py-2.5 rounded-xl bg-bazan-950 border border-amber-900/70 text-xs text-white focus:outline-none focus:border-amber-500">
+                    <input type="tel" id="order-customer-phone" placeholder="Số điện thoại nhận bàn / giao *" class="w-full px-3.5 py-2.5 rounded-xl bg-bazan-950 border border-amber-900/70 text-xs text-white focus:outline-none focus:border-amber-500">
+                    <input type="text" id="order-customer-address" placeholder="Bàn số mấy hoặc Địa chỉ giao tại Buôn Ma Thuột..." class="w-full px-3.5 py-2.5 rounded-xl bg-bazan-950 border border-amber-900/70 text-xs text-white focus:outline-none focus:border-amber-500">
+                </div>
+
+                <button onclick="submitOrder()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700 hover:from-amber-500 hover:to-orange-500 text-white font-bold text-sm uppercase tracking-wider shadow-lg transition flex items-center justify-center space-x-2">
+                    <i data-lucide="check" class="w-4 h-4"></i>
+                    <span>Xác Nhận Đặt Đơn Ngay</span>
+                </button>
+
+                <p class="text-[10px] text-center text-amber-300/60 italic">
+                    * Quán sẽ gọi điện xác nhận ngay sau khi nhận được đơn hàng.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. FORM LIÊN HỆ ĐỂ LẠI LỜI NHẮN -->
+    <section id="contact" class="py-20 bg-bazan-950/70">
         <div class="max-w-2xl mx-auto px-4 sm:px-6">
             <div class="glass-box p-8 sm:p-10 rounded-3xl border border-amber-600/30 shadow-2xl">
                 <div class="text-center mb-8">
                     <span class="text-xs uppercase tracking-widest font-bold text-amber-400">Gặp Gỡ & Kết Nối</span>
                     <h2 class="text-2xl sm:text-3xl font-serif font-bold text-white mt-1">Để Lại Lời Nhắn Cho Bazan Đỏ</h2>
-                    <p class="text-sm text-amber-200/70 mt-2">Bạn cần đặt bàn trước, hỏi về cà phê hạt hay có điều gì muốn gửi gắm?</p>
+                    <p class="text-sm text-amber-200/70 mt-2">Gửi ý kiến đóng góp, dặn dò hoặc đặt tiệc sự kiện ấm cúng tại quán.</p>
                 </div>
 
-                <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-5">
-                    <!-- Họ tên -->
+                <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
                     <div>
-                        <label for="fullname" class="block text-xs font-semibold uppercase tracking-wider text-amber-200 mb-2">Họ tên của bạn</label>
-                        <input type="text" id="fullname" required placeholder="Ví dụ: Nguyễn Văn A" class="w-full px-4 py-3.5 rounded-xl bg-bazan-950/90 border border-amber-900/60 text-white placeholder-stone-500 focus:outline-none focus:border-amber-500 transition text-sm">
+                        <label for="fullname" class="block text-xs font-semibold uppercase tracking-wider text-amber-200 mb-1.5">Họ tên của bạn</label>
+                        <input type="text" id="fullname" required placeholder="Ví dụ: Nguyễn Văn A" class="w-full px-4 py-3 rounded-xl bg-bazan-950/90 border border-amber-900/60 text-white text-sm focus:outline-none focus:border-amber-500 transition">
                     </div>
 
-                    <!-- Email -->
                     <div>
-                        <label for="email" class="block text-xs font-semibold uppercase tracking-wider text-amber-200 mb-2">Địa chỉ Email</label>
-                        <input type="email" id="email" required placeholder="name@example.com" class="w-full px-4 py-3.5 rounded-xl bg-bazan-950/90 border border-amber-900/60 text-white placeholder-stone-500 focus:outline-none focus:border-amber-500 transition text-sm">
+                        <label for="email" class="block text-xs font-semibold uppercase tracking-wider text-amber-200 mb-1.5">Địa chỉ Email</label>
+                        <input type="email" id="email" required placeholder="name@example.com" class="w-full px-4 py-3 rounded-xl bg-bazan-950/90 border border-amber-900/60 text-white text-sm focus:outline-none focus:border-amber-500 transition">
                     </div>
 
-                    <!-- Lời nhắn -->
                     <div>
-                        <label for="message" class="block text-xs font-semibold uppercase tracking-wider text-amber-200 mb-2">Lời nhắn</label>
-                        <textarea id="message" rows="4" required placeholder="Nhập lời nhắn, ý kiến đóng góp hoặc yêu cầu đặt bàn..." class="w-full px-4 py-3.5 rounded-xl bg-bazan-950/90 border border-amber-900/60 text-white placeholder-stone-500 focus:outline-none focus:border-amber-500 transition text-sm resize-none"></textarea>
+                        <label for="message" class="block text-xs font-semibold uppercase tracking-wider text-amber-200 mb-1.5">Lời nhắn</label>
+                        <textarea id="message" rows="3" required placeholder="Nhập lời nhắn gửi gắm đến quán..." class="w-full px-4 py-3 rounded-xl bg-bazan-950/90 border border-amber-900/60 text-white text-sm focus:outline-none focus:border-amber-500 transition resize-none"></textarea>
                     </div>
 
-                    <!-- Nút Gửi -->
-                    <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700 hover:from-amber-500 hover:to-orange-500 text-white font-bold text-sm uppercase tracking-wider shadow-lg shadow-amber-950/60 transition flex items-center justify-center space-x-2">
+                    <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700 hover:from-amber-500 hover:to-orange-500 text-white font-bold text-sm uppercase tracking-wider shadow-md transition flex items-center justify-center space-x-2">
                         <i data-lucide="send" class="w-4 h-4"></i>
                         <span>Gửi Lời Nhắn</span>
                     </button>
 
-                    <!-- Dòng ghi chú cam kết thông tin theo yêu cầu -->
-                    <p class="text-xs text-center text-amber-300/60 italic pt-2">
+                    <p class="text-xs text-center text-amber-300/60 italic pt-1">
                         * Thông tin của bạn chỉ được sử dụng để quán liên hệ lại và cam kết bảo mật tuyệt đối.
                     </p>
                 </form>
 
-                <!-- Thông báo thành công ẩn -->
-                <div id="success-box" class="hidden mt-6 p-4 rounded-xl bg-emerald-950/80 border border-emerald-500/50 text-emerald-200 text-center text-sm">
+                <div id="success-box" class="hidden mt-4 p-4 rounded-xl bg-emerald-950/80 border border-emerald-500/50 text-emerald-200 text-center text-sm">
                     <p class="font-bold flex items-center justify-center space-x-2 mb-1">
                         <i data-lucide="check-circle" class="w-5 h-5 text-emerald-400"></i>
-                        <span>Đã nhận lời nhắn thành công!</span>
+                        <span>Đã gửi lời nhắn thành công!</span>
                     </p>
-                    <p class="text-xs text-emerald-300/80">Bazan Đỏ sẽ liên hệ lại với bạn trong thời gian sớm nhất.</p>
+                    <p class="text-xs text-emerald-300/80">Bazan Đỏ sẽ phản hồi tới bạn trong thời gian sớm nhất.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 5. CHÂN TRANG (Địa chỉ & Giờ mở cửa) -->
+    <!-- 7. CHÂN TRANG -->
     <footer class="bg-bazan-950 border-t border-amber-900/50 pt-12 pb-8">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-10 border-b border-amber-900/40">
-                <!-- Cột 1: Thông tin thương hiệu -->
                 <div>
                     <div class="flex items-center space-x-2 mb-3">
                         <i data-lucide="coffee" class="w-5 h-5 text-amber-500"></i>
@@ -307,7 +417,6 @@
                     </p>
                 </div>
 
-                <!-- Cột 2: Địa chỉ -->
                 <div>
                     <h4 class="text-sm font-bold uppercase tracking-wider text-amber-300 mb-3 flex items-center space-x-2">
                         <i data-lucide="map-pin" class="w-4 h-4 text-amber-500"></i>
@@ -318,7 +427,6 @@
                     </p>
                 </div>
 
-                <!-- Cột 3: Giờ mở cửa -->
                 <div>
                     <h4 class="text-sm font-bold uppercase tracking-wider text-amber-300 mb-3 flex items-center space-x-2">
                         <i data-lucide="clock" class="w-4 h-4 text-amber-500"></i>
@@ -337,26 +445,438 @@
         </div>
     </footer>
 
+    <!-- LOGIC JAVASCRIPT: MENU, CUSTOMIZATION, CART -->
     <script>
-        // Khởi tạo icons
-        document.addEventListener('DOMContentLoaded', () => {
-            lucide.createIcons();
-        });
+        // CƠ SỞ DỮ LIỆU SẢN PHẨM PHÂN LOẠI & KÈM NHÃN TĂNG AOV
+        const menuProducts = [
+            // Cà phê truyền thống
+            {
+                id: 'cf-phin',
+                category: 'traditional',
+                name: 'Cà Phê Phin Robusta Buôn Ma Thuột',
+                desc: 'Cà phê phin truyền thống rang mộc, vị đắng đậm đà quyện chút hậu ngọt tự nhiên khó phai.',
+                basePrice: 35000,
+                image: 'images/phin_robusta.jpg',
+                badge: { text: 'Gợi ý combo sáng ☀️', color: 'bg-amber-500/90 text-white' }
+            },
+            {
+                id: 'cf-muoi',
+                category: 'traditional',
+                name: 'Cà Phê Muối Bazan',
+                desc: 'Lớp kem muối béo mặn mượt mà kết hợp hài hòa cùng vị cà phê đắng nồng của đất đỏ.',
+                basePrice: 45000,
+                image: 'images/cafe_muoi.jpg',
+                badge: { text: 'Best-Seller 🔥', color: 'bg-red-600 text-white' }
+            },
+            {
+                id: 'bac-xiu',
+                category: 'traditional',
+                name: 'Bạc Xỉu Sữa Hạt Kơ-Nia',
+                desc: 'Hương cà phê dịu nhẹ hòa cùng sữa hạt kơ-nia rừng giã nhuyễn thơm bùi béo ngậy.',
+                basePrice: 40000,
+                image: 'images/bac_xiu.jpg',
+                badge: { text: 'Món Mới ✨', color: 'bg-emerald-600 text-white' }
+            },
 
-        // Xử lý gửi form
+            // Cà phê máy
+            {
+                id: 'cold-brew',
+                category: 'machine',
+                name: 'Arabica Cầu Đất Ủ Lạnh (Cold Brew)',
+                desc: 'Ủ lạnh 16 tiếng mang lại hương thơm hoa quả rừng thoang thoảng và vị chua thanh tao nhã.',
+                basePrice: 48000,
+                image: 'images/cold_brew.jpg',
+                badge: { text: 'Best-Seller 🔥', color: 'bg-red-600 text-white' }
+            },
+            {
+                id: 'espresso',
+                category: 'machine',
+                name: 'Espresso Double Shot Núi Rừng',
+                desc: 'Chiết xuất từ hạt Arabica & Robusta tuyển chọn với áp suất tiêu chuẩn, lớp Crema vàng óng.',
+                basePrice: 38000,
+                image: 'images/espresso.jpg',
+                badge: { text: 'Đậm Gu Bản Lĩnh', color: 'bg-stone-700 text-amber-200' }
+            },
+
+            // Trà trái cây
+            {
+                id: 'tra-cascara',
+                category: 'tea',
+                name: 'Trà Cascara Hoa Cà Phê',
+                desc: 'Trà ủ từ vỏ quả cà phê chín mọng ngọt thanh mát dịu, giàu chất chống oxy hóa.',
+                basePrice: 42000,
+                image: 'images/tra_cascara.jpg',
+                badge: { text: 'Đặc Sản Quán 🌿', color: 'bg-amber-600 text-white' }
+            },
+            {
+                id: 'tra-mang-cau',
+                category: 'tea',
+                name: 'Trà Mãng Cầu Xiêm Đắk Lắk',
+                desc: 'Vị chua ngọt mát lành từ mãng cầu gai vùng cao nguyên kết hợp nền trà lài thanh nhẹ.',
+                basePrice: 45000,
+                image: 'images/tra_mang_cau.jpg',
+                badge: { text: 'Món Mới ✨', color: 'bg-emerald-600 text-white' }
+            },
+            {
+                id: 'tra-dao',
+                category: 'tea',
+                name: 'Trà Đào Cam Sả Mật Ong Rừng',
+                desc: 'Miếng đào giòn mọng, sả tươi nồng ấm cùng mật ong rừng Lắk nguyên chất thơm lừng.',
+                basePrice: 45000,
+                image: 'images/tra_dao.jpg',
+                badge: null
+            },
+
+            // Đá xay tuyết
+            {
+                id: 'cacao-nong',
+                category: 'blended',
+                name: 'Cacao Nóng Lắk Mật Ong Rừng',
+                desc: 'Cacao nguyên chất vùng Đắk Lắk ngọt đằm nhờ mật ong rừng, sưởi ấm những chiều se lạnh.',
+                basePrice: 50000,
+                image: 'images/cacao_nong.jpg',
+                badge: { text: 'Gợi ý ấm áp ☕', color: 'bg-orange-600 text-white' }
+            },
+            {
+                id: 'da-xay-cafe',
+                category: 'blended',
+                name: 'Freeze Cà Phê Bơ Sáp Tây Nguyên',
+                desc: 'Sự kết hợp bùng nổ giữa bơ sáp Đắk Lắk béo ngậy và cốt cà phê espresso đắng nồng đá xay.',
+                basePrice: 55000,
+                image: 'images/da_xay_cafe.jpg',
+                badge: { text: 'Best-Seller 🔥', color: 'bg-red-600 text-white' }
+            },
+            {
+                id: 'matcha-da-xay',
+                category: 'blended',
+                name: 'Matcha Tuyết Đậu Đỏ Cao Nguyên',
+                desc: 'Trà xanh Nhật Bản nguyên chất xay mịn cùng đá tuyết, phủ lớp kem tươi và đậu đỏ ngọt bùi.',
+                basePrice: 52000,
+                image: 'images/matcha_da_xay.jpg',
+                badge: null
+            },
+
+            // Bánh ngọt & Đồ ăn kèm
+            {
+                id: 'croissant',
+                category: 'bakery',
+                name: 'Croissant Bơ Pháp Nướng Giòn',
+                desc: 'Bánh sừng bò ngàn lớp thơm lừng bơ mịn, dùng kèm cà phê buổi sáng ngon chuẩn điệu.',
+                basePrice: 32000,
+                image: 'images/croissant.jpg',
+                badge: { text: 'Combo Sáng +15k 🥐', color: 'bg-amber-500 text-black' }
+            },
+            {
+                id: 'tiramisu',
+                category: 'bakery',
+                name: 'Tiramisu Cà Phê Robusta Bazan',
+                desc: 'Bánh mousse phô mai Ý thấm đượm vị rượu và cốt cà phê Robusta đặc trưng của quán.',
+                basePrice: 42000,
+                image: 'images/tiramisu.jpg',
+                badge: { text: 'Cặp Đôi Hoàn Hảo ✨', color: 'bg-purple-700 text-white' }
+            }
+        ];
+
+        // Biến trạng thái
+        let currentItem = null;
+        let selectedSize = { name: 'M', extra: 6000 };
+        let currentQuantity = 1;
+        let cart = [];
+
+        // Định dạng tiền tệ VNĐ
+        function formatVND(amount) {
+            return new Intl.NumberFormat('vi-VN').format(amount) + ' VNĐ';
+        }
+
+        // Render danh sách sản phẩm theo danh mục
+        function renderProducts(category = 'all') {
+            const container = document.getElementById('products-grid');
+            const filtered = category === 'all' 
+                ? menuProducts 
+                : menuProducts.filter(p => p.category === category);
+
+            container.innerHTML = filtered.map(p => `
+                <div class="glass-box rounded-2xl overflow-hidden border border-amber-700/30 hover:border-amber-500/60 transition duration-300 flex flex-col justify-between group">
+                    <div class="h-52 overflow-hidden relative">
+                        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-bazan-950/90 via-transparent to-transparent"></div>
+                        
+                        ${p.badge ? `
+                            <span class="absolute top-3 left-3 text-[10px] font-black uppercase px-2.5 py-1 rounded-full shadow-md ${p.badge.color}">
+                                ${p.badge.text}
+                            </span>
+                        ` : ''}
+
+                        <span class="absolute bottom-3 right-4 text-base font-bold text-amber-400 font-serif bg-black/60 px-3 py-1 rounded-full border border-amber-500/30">
+                            ${formatVND(p.basePrice)}
+                        </span>
+                    </div>
+
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold font-serif text-white mb-1.5 leading-snug">${p.name}</h3>
+                            <p class="text-xs text-amber-200/75 leading-relaxed mb-4">${p.desc}</p>
+                        </div>
+
+                        <button onclick="openCustomizeModal('${p.id}')" class="w-full py-2.5 px-4 rounded-xl bg-amber-900/40 hover:bg-amber-600 text-amber-200 hover:text-white border border-amber-600/40 font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 transition shadow-md">
+                            <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                            <span>Chọn món & Tùy chỉnh</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        // Lọc danh mục
+        function filterCategory(cat) {
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.className = "cat-btn px-5 py-2.5 rounded-full text-xs font-bold whitespace-nowrap glass-box text-amber-300 hover:bg-amber-800/40 transition";
+            });
+            event.target.className = "cat-btn active px-5 py-2.5 rounded-full text-xs font-bold whitespace-nowrap bg-amber-600 text-white shadow-md transition";
+            renderProducts(cat);
+        }
+
+        // Mở Modal tùy chỉnh món
+        function openCustomizeModal(productId) {
+            currentItem = menuProducts.find(p => p.id === productId);
+            if (!currentItem) return;
+
+            // Reset modal options
+            selectedSize = { name: 'M', extra: 6000 };
+            currentQuantity = 1;
+            document.getElementById('modal-qty').innerText = '1';
+            document.getElementById('item-notes').value = '';
+            document.getElementById('opt-sugar').value = '50%';
+            document.getElementById('opt-ice').value = '70%';
+            
+            // Reset radio milk & checkboxes topping
+            const radios = document.getElementsByName('milk');
+            radios[0].checked = true;
+            document.querySelectorAll('#topping-options input[type="checkbox"]').forEach(cb => cb.checked = false);
+
+            // Cập nhật thông tin món
+            document.getElementById('modal-img').src = currentItem.image;
+            document.getElementById('modal-name').innerText = currentItem.name;
+            document.getElementById('modal-desc').innerText = currentItem.desc;
+            document.getElementById('modal-base-price').innerText = formatVND(currentItem.basePrice);
+
+            const badgeEl = document.getElementById('modal-badge');
+            if (currentItem.badge) {
+                badgeEl.innerText = currentItem.badge.text;
+                badgeEl.className = `inline-block text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full mb-1 ${currentItem.badge.color}`;
+                badgeEl.style.display = 'inline-block';
+            } else {
+                badgeEl.style.display = 'none';
+            }
+
+            // Đặt lại nút Size
+            updateSizeButtonsUI();
+            calculateModalTotal();
+
+            document.getElementById('customize-modal').classList.remove('hidden');
+            document.getElementById('customize-modal').classList.add('flex');
+            lucide.createIcons();
+        }
+
+        function closeCustomizeModal() {
+            document.getElementById('customize-modal').classList.add('hidden');
+            document.getElementById('customize-modal').classList.remove('flex');
+        }
+
+        // Chọn size
+        function selectSize(sizeName, extraPrice) {
+            selectedSize = { name: sizeName, extra: extraPrice };
+            updateSizeButtonsUI();
+            calculateModalTotal();
+        }
+
+        function updateSizeButtonsUI() {
+            const buttons = document.querySelectorAll('.size-btn');
+            buttons.forEach(btn => {
+                if (btn.innerText.includes(`Size ${selectedSize.name}`)) {
+                    btn.className = "size-btn active p-3 rounded-xl border border-amber-500 bg-amber-600/30 text-center transition";
+                } else {
+                    btn.className = "size-btn p-3 rounded-xl border border-amber-700/40 text-center hover:border-amber-500 transition";
+                }
+            });
+        }
+
+        function changeQuantity(delta) {
+            currentQuantity = Math.max(1, currentQuantity + delta);
+            document.getElementById('modal-qty').innerText = currentQuantity;
+            calculateModalTotal();
+        }
+
+        // Tính tổng tiền realtime trong modal
+        function calculateModalTotal() {
+            if (!currentItem) return 0;
+
+            let unitPrice = currentItem.basePrice + selectedSize.extra;
+
+            // Loại sữa
+            const selectedMilk = document.querySelector('input[name="milk"]:checked').value;
+            const milkExtra = parseInt(selectedMilk.split('|')[1]);
+            unitPrice += milkExtra;
+
+            // Topping
+            const toppingBoxes = document.querySelectorAll('#topping-options input[type="checkbox"]:checked');
+            toppingBoxes.forEach(cb => {
+                const topExtra = parseInt(cb.value.split('|')[1]);
+                unitPrice += topExtra;
+            });
+
+            const totalPrice = unitPrice * currentQuantity;
+            document.getElementById('modal-final-price').innerText = formatVND(totalPrice);
+            return { unitPrice, totalPrice };
+        }
+
+        // Thêm món vào Giỏ Hàng
+        function addItemToCart() {
+            const { unitPrice, totalPrice } = calculateModalTotal();
+            const sugar = document.getElementById('opt-sugar').value;
+            const ice = document.getElementById('opt-ice').value;
+            const milkText = document.querySelector('input[name="milk"]:checked').value.split('|')[0];
+
+            const toppings = Array.from(document.querySelectorAll('#topping-options input[type="checkbox"]:checked'))
+                .map(cb => cb.value.split('|')[0]);
+
+            const notes = document.getElementById('item-notes').value.trim();
+
+            const cartItem = {
+                id: Date.now(),
+                name: currentItem.name,
+                image: currentItem.image,
+                size: selectedSize.name,
+                sugar: sugar,
+                ice: ice,
+                milk: milkText,
+                toppings: toppings,
+                notes: notes,
+                quantity: currentQuantity,
+                unitPrice: unitPrice,
+                totalPrice: totalPrice
+            };
+
+            cart.push(cartItem);
+            updateCartUI();
+            closeCustomizeModal();
+            toggleCartDrawer(true); // Mở giỏ hàng cho khách thấy
+        }
+
+        // Bật/tắt ngăn kéo giỏ hàng
+        function toggleCartDrawer(forceOpen = false) {
+            const drawer = document.getElementById('cart-drawer');
+            if (forceOpen) {
+                drawer.classList.remove('hidden');
+                drawer.classList.add('flex');
+            } else {
+                drawer.classList.toggle('hidden');
+                drawer.classList.toggle('flex');
+            }
+            lucide.createIcons();
+        }
+
+        // Cập nhật giao diện giỏ hàng
+        function updateCartUI() {
+            const container = document.getElementById('cart-items-container');
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const grandTotal = cart.reduce((sum, item) => sum + item.totalPrice, 0);
+
+            document.getElementById('cart-badge').innerText = totalCount;
+            document.getElementById('cart-item-count').innerText = totalCount;
+            document.getElementById('cart-grand-total').innerText = formatVND(grandTotal);
+            document.getElementById('hero-cart-total').innerText = formatVND(grandTotal);
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="h-64 flex flex-col items-center justify-center text-center text-amber-300/60 space-y-3">
+                        <i data-lucide="coffee" class="w-12 h-12 stroke-[1.5]"></i>
+                        <p class="text-sm">Giỏ hàng của bạn đang trống.</p>
+                        <p class="text-xs text-amber-400">Hãy chọn một món cà phê thơm nồng nhé!</p>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = cart.map(item => `
+                    <div class="p-3.5 rounded-2xl bg-bazan-950/80 border border-amber-900/70 text-xs">
+                        <div class="flex items-start justify-between mb-1.5">
+                            <h4 class="font-serif font-bold text-white text-sm leading-snug">${item.name}</h4>
+                            <button onclick="removeCartItem(${item.id})" class="text-stone-500 hover:text-red-400 transition p-1">
+                                <i data-lucide="trash-2" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+
+                        <div class="text-[11px] text-amber-300/80 space-y-0.5 mb-2">
+                            <div>• Size: <strong class="text-amber-200">${item.size}</strong> | Đường: ${item.sugar} | Đá: ${item.ice}</div>
+                            <div>• Sữa: ${item.milk}</div>
+                            ${item.toppings.length > 0 ? `<div>• Topping: ${item.toppings.join(', ')}</div>` : ''}
+                            ${item.notes ? `<div class="text-amber-400 italic">📝 Ghi chú: "${item.notes}"</div>` : ''}
+                        </div>
+
+                        <div class="flex items-center justify-between pt-2 border-t border-amber-950/80">
+                            <span class="text-amber-200/70">Số lượng: <strong class="text-white">${item.quantity}</strong></span>
+                            <span class="font-serif font-bold text-amber-400 text-sm">${formatVND(item.totalPrice)}</span>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            lucide.createIcons();
+        }
+
+        // Xóa món khỏi giỏ hàng
+        function removeCartItem(itemId) {
+            cart = cart.filter(item => item.id !== itemId);
+            updateCartUI();
+        }
+
+        // Gửi đơn hàng
+        function submitOrder() {
+            if (cart.length === 0) {
+                alert("Vui lòng chọn ít nhất 1 món vào giỏ hàng trước khi đặt!");
+                return;
+            }
+
+            const name = document.getElementById('order-customer-name').value.trim();
+            const phone = document.getElementById('order-customer-phone').value.trim();
+            const address = document.getElementById('order-customer-address').value.trim();
+
+            if (!name || !phone) {
+                alert("Vui lòng nhập Họ tên và Số điện thoại để quán liên hệ xác nhận đơn nhé!");
+                return;
+            }
+
+            const total = cart.reduce((sum, item) => sum + item.totalPrice, 0);
+
+            alert(`🎉 ĐẶT HÀNG THÀNH CÔNG!\n\nCảm ơn anh/chị ${name} (${phone}).\nĐơn hàng gồm ${cart.length} món với tổng giá trị ${formatVND(total)} đã được chuyển đến quầy pha chế Bazan Đỏ.\nNhân viên sẽ gọi điện thoại xác nhận trong 3 phút!`);
+
+            cart = [];
+            updateCartUI();
+            toggleCartDrawer();
+            document.getElementById('order-customer-name').value = '';
+            document.getElementById('order-customer-phone').value = '';
+            document.getElementById('order-customer-address').value = '';
+        }
+
+        // Xử lý gửi form liên hệ
         function handleFormSubmit(e) {
             e.preventDefault();
             const form = document.getElementById('contact-form');
             const successBox = document.getElementById('success-box');
 
-            // Hiển thị thông báo
             successBox.classList.remove('hidden');
             form.reset();
             lucide.createIcons();
-
-            // Cuộn nhẹ tới thông báo
             successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
+
+        // Khởi chạy khi load trang
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts('all');
+            updateCartUI();
+            lucide.createIcons();
+        });
     </script>
 </body>
 </html>
