@@ -59,6 +59,83 @@
             scrollbar-width: none;
         }
     </style>
+    <!-- Firebase JS SDK (v10.14.1) qua CDN -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+        // Cấu hình Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyD9m72mA23zog_iF9XPP77mHGqTOl4WHp8",
+            authDomain: "cafe-landing-2600031306.firebaseapp.com",
+            projectId: "cafe-landing-2600031306",
+            storageBucket: "cafe-landing-2600031306.firebasestorage.app",
+            messagingSenderId: "750142936483",
+            appId: "1:750142936483:web:41a7ce961298ea17ab3616"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Đính kèm hàm xử lý form gửi Firestore vào window
+        window.handleContactSubmit = async function(e) {
+            e.preventDefault();
+            const form = document.getElementById('contact-form');
+            const successBox = document.getElementById('success-box');
+            const errorBox = document.getElementById('error-box');
+            const errorMsg = document.getElementById('error-msg');
+            const submitBtn = form.querySelector('button[type="submit"]');
+
+            successBox.classList.add('hidden');
+            errorBox.classList.add('hidden');
+
+            const hoTen = document.getElementById('fullname').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const loiNhan = document.getElementById('message').value.trim();
+
+            if (!hoTen || !email || !loiNhan) {
+                errorMsg.innerText = "Vui lòng điền đầy đủ tất cả các trường.";
+                errorBox.classList.remove('hidden');
+                lucide.createIcons();
+                return;
+            }
+
+            // Kiểm tra giới hạn độ dài theo đúng Firestore Rules
+            if (hoTen.length > 100 || email.length > 100 || loiNhan.length > 1000) {
+                errorMsg.innerText = "Thông tin nhập vượt quá độ dài cho phép (Họ tên, email <= 100 ký tự; lời nhắn <= 1000 ký tự).";
+                errorBox.classList.remove('hidden');
+                lucide.createIcons();
+                return;
+            }
+
+            const originalBtnHTML = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<span>Đang gửi lời nhắn...</span>`;
+
+            try {
+                // Thêm tài liệu mới vào collection "lienhe" với đúng 4 trường theo Security Rules
+                await addDoc(collection(db, "lienhe"), {
+                    hoTen: hoTen,
+                    email: email,
+                    loiNhan: loiNhan,
+                    thoiGian: serverTimestamp()
+                });
+
+                successBox.classList.remove('hidden');
+                form.reset();
+                successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } catch (err) {
+                console.error("Firestore submit error:", err);
+                errorMsg.innerText = "Lỗi khi lưu vào Firestore: " + (err.message || "Không thể kết nối đến máy chủ.");
+                errorBox.classList.remove('hidden');
+                errorBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnHTML;
+                lucide.createIcons();
+            }
+        };
+    </script>
 </head>
 <body class="wood-texture text-amber-50 font-sans min-h-screen selection:bg-amber-700 selection:text-white flex flex-col justify-between">
 
@@ -366,7 +443,7 @@
                     <p class="text-sm text-amber-200/70 mt-2">Gửi ý kiến đóng góp, dặn dò hoặc đặt tiệc sự kiện ấm cúng tại quán.</p>
                 </div>
 
-                <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
                     <div>
                         <label for="fullname" class="block text-xs font-semibold uppercase tracking-wider text-amber-200 mb-1.5">Họ tên của bạn</label>
                         <input type="text" id="fullname" required placeholder="Ví dụ: Nguyễn Văn A" class="w-full px-4 py-3 rounded-xl bg-bazan-950/90 border border-amber-900/60 text-white text-sm focus:outline-none focus:border-amber-500 transition">
@@ -397,7 +474,15 @@
                         <i data-lucide="check-circle" class="w-5 h-5 text-emerald-400"></i>
                         <span>Đã gửi lời nhắn thành công!</span>
                     </p>
-                    <p class="text-xs text-emerald-300/80">Bazan Đỏ sẽ phản hồi tới bạn trong thời gian sớm nhất.</p>
+                    <p class="text-xs text-emerald-300/80">Lời nhắn đã được lưu vào hệ thống. Bazan Đỏ sẽ phản hồi tới bạn sớm nhất.</p>
+                </div>
+
+                <div id="error-box" class="hidden mt-4 p-4 rounded-xl bg-red-950/80 border border-red-500/50 text-red-200 text-center text-sm">
+                    <p class="font-bold flex items-center justify-center space-x-2 mb-1">
+                        <i data-lucide="alert-circle" class="w-5 h-5 text-red-400"></i>
+                        <span>Gửi lời nhắn thất bại!</span>
+                    </p>
+                    <p class="text-xs text-red-300/80" id="error-msg">Vui lòng kiểm tra lại thông tin và thử lại sau.</p>
                 </div>
             </div>
         </div>
