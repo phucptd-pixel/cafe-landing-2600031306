@@ -1,0 +1,15 @@
+# Environment & Secrets
+.env
+.env.local
+.env.*
+*.key
+*.pem
+*.cert
+*.secret
+credentials.json
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
