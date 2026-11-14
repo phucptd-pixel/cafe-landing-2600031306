@@ -831,8 +831,8 @@
             updateCartUI();
         }
 
-        // Gửi đơn hàng
-        function submitOrder() {
+        // Gửi đơn hàng về Telegram Quầy Pha Chế
+        async function submitOrder() {
             if (cart.length === 0) {
                 alert("Vui lòng chọn ít nhất 1 món vào giỏ hàng trước khi đặt!");
                 return;
@@ -849,7 +849,50 @@
 
             const total = cart.reduce((sum, item) => sum + item.totalPrice, 0);
 
-            alert(`🎉 ĐẶT HÀNG THÀNH CÔNG!\n\nCảm ơn anh/chị ${name} (${phone}).\nĐơn hàng gồm ${cart.length} món với tổng giá trị ${formatVND(total)} đã được chuyển đến quầy pha chế Bazan Đỏ.\nNhân viên sẽ gọi điện thoại xác nhận trong 3 phút!`);
+            // Cấu hình Bot Telegram Quầy Bar
+            const BOT_TOKEN = "9283603265:AAE051zpmXe8o_qSgaGIHCtdcrVRihG0HFc";
+            const CHAT_ID = "9110601305";
+
+            // Soạn nội dung tin nhắn gửi quầy pha chế
+            let msg = `🛎 <b>CÓ ĐƠN HÀNG MỚI - BAZAN ĐỎ</b>\n\n`;
+            msg += `👤 <b>Khách hàng:</b> ${name}\n`;
+            msg += `📞 <b>Số điện thoại:</b> ${phone}\n`;
+            msg += `📍 <b>Vị trí/Bàn:</b> ${address || "Tại quán"}\n`;
+            msg += `⏰ <b>Thời gian:</b> ${new Date().toLocaleTimeString('vi-VN')} - ${new Date().toLocaleDateString('vi-VN')}\n`;
+            msg += `------------------------------------\n`;
+
+            cart.forEach((item, index) => {
+                msg += `☕ <b>${index + 1}. ${item.name}</b> (x${item.quantity})\n`;
+                msg += `   • Size: <b>${item.size}</b> | ${item.sugar} Đường | ${item.ice} Đá\n`;
+                msg += `   • Loại sữa: ${item.milk}\n`;
+                if (item.toppings && item.toppings.length > 0) {
+                    msg += `   • Topping: ${item.toppings.join(', ')}\n`;
+                }
+                if (item.notes) {
+                    msg += `   • 📝 <i>Ghi chú: "${item.notes}"</i>\n`;
+                }
+                msg += `   👉 Thành tiền: ${formatVND(item.totalPrice)}\n\n`;
+            });
+
+            msg += `------------------------------------\n`;
+            msg += `💰 <b>TỔNG TIỀN ĐƠN:</b> <b>${formatVND(total)}</b>`;
+
+            try {
+                // Gửi trực tiếp từ trình duyệt khách hàng qua API Telegram
+                fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: msg,
+                        parse_mode: 'HTML'
+                    })
+                }).catch(err => console.log('Telegram send notice:', err));
+            } catch (e) {
+                console.error(e);
+            }
+
+            alert(`🎉 ĐẶT HÀNG THÀNH CÔNG!\n\nCảm ơn anh/chị ${name} (${phone}).\nĐơn hàng gồm ${cart.length} món với tổng giá trị ${formatVND(total)} đã được chuyển thẳng tới Telegram quầy pha chế Bazan Đỏ.\nNhân viên sẽ chuẩn bị ngay!`);
 
             cart = [];
             updateCartUI();
