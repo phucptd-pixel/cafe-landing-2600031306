@@ -877,9 +877,33 @@
             msg += `------------------------------------\n`;
             msg += `💰 <b>TỔNG TIỀN ĐƠN:</b> <b>${formatVND(total)}</b>`;
 
+            // Cấu hình Google Sheets Apps Script API
+            const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycby_WxDXEdU0w-3VGk2g5udADMNo-UypGWiU6kXgGEet7KCih-4sbCTiT1VfbfwvyYEH/exec";
+
+            // Soạn tóm tắt chi tiết các món cho Google Sheet
+            const itemsSummary = cart.map((item, idx) => {
+                let detail = `${idx + 1}. ${item.name} (x${item.quantity}) [Size ${item.size}, ${item.sugar} đường, ${item.ice} đá, ${item.milk}`;
+                if (item.toppings && item.toppings.length > 0) detail += `, Top: ${item.toppings.join('/')}`;
+                detail += `]`;
+                return detail;
+            }).join("\n");
+
+            const allNotes = cart.map(item => item.notes).filter(Boolean).join("; ");
+
+            const sheetPayload = {
+                time: new Date().toLocaleTimeString('vi-VN') + " " + new Date().toLocaleDateString('vi-VN'),
+                name: name,
+                phone: phone,
+                address: address || "Tại quán",
+                itemsDetail: itemsSummary,
+                notes: allNotes || "Không có",
+                totalFormatted: formatVND(total)
+            };
+
+            // 1. Gửi đồng thời về Telegram Quầy Bar & Google Sheets
             try {
-                // Gửi trực tiếp từ trình duyệt khách hàng qua API Telegram
-                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                // Gửi tới Telegram
+                const p1 = fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -888,11 +912,18 @@
                         parse_mode: 'HTML'
                     })
                 });
+
+                // Gửi tới Google Sheets (no-cors để tránh bị chặn CORS từ Google Apps Script)
+                const p2 = fetch(GOOGLE_SHEET_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(sheetPayload)
+                });
+
+                await Promise.allSettled([p1, p2]);
             } catch (err) {
-                console.error('Telegram send notice:', err);
-            }
-            } catch (e) {
-                console.error(e);
+                console.error('Lỗi khi gửi đơn hàng:', err);
             }
 
             alert(`🎉 ĐẶT HÀNG THÀNH CÔNG!\n\nCảm ơn anh/chị ${name} (${phone}).\nĐơn hàng gồm ${cart.length} món với tổng giá trị ${formatVND(total)} đã được chuyển thẳng tới quầy pha chế Bazan Đỏ.\nNhân viên sẽ chuẩn bị ngay!`);
