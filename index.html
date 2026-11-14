@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hương Vị Đại Ngàn - Ẩm Thực Tây Nguyên</title>
+    <title>Bazan Đỏ - Cà Phê Nguyên Bản Đại Ngàn</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&display=swap" rel="stylesheet">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
@@ -21,17 +21,19 @@
                         serif: ['Playfair Display', 'serif'],
                     },
                     colors: {
-                        basalt: {
-                            800: '#2A1A12',
-                            900: '#1C0F0A',
+                        bazan: {
+                            800: '#3D1C10',
+                            900: '#231008',
+                            950: '#150A05',
+                        },
+                        ochre: {
+                            500: '#C86D3B',
+                            600: '#A44F22',
                         },
                         amberGlow: {
-                            500: '#D97706',
-                            600: '#B45309',
-                        },
-                        forest: {
-                            700: '#1B4332',
-                            800: '#081C15',
+                            400: '#FBBF24',
+                            500: '#F59E0B',
+                            600: '#D97706',
                         }
                     }
                 }
@@ -39,593 +41,310 @@
         }
     </script>
     <style>
-        .wood-pattern {
-            background-color: #120b08;
-            background-image: radial-gradient(rgba(217, 119, 6, 0.15) 1px, transparent 1px);
-            background-size: 28px 28px;
+        .wood-texture {
+            background-color: #150A05;
+            background-image: radial-gradient(rgba(200, 109, 59, 0.12) 1px, transparent 1px);
+            background-size: 24px 24px;
         }
-        .hero-gradient {
-            background: linear-gradient(180deg, rgba(18, 11, 8, 0.4) 0%, rgba(18, 11, 8, 0.95) 100%), 
-                        url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+        .hero-banner {
+            background: linear-gradient(180deg, rgba(21, 10, 5, 0.5) 0%, rgba(21, 10, 5, 0.95) 100%),
+                        url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
         }
-        .glass-card {
-            background: rgba(35, 23, 17, 0.75);
-            backdrop-filter: blur(14px);
-            border: 1px solid rgba(217, 119, 6, 0.2);
+        .glass-box {
+            background: rgba(43, 21, 12, 0.78);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(200, 109, 59, 0.25);
         }
     </style>
 </head>
-<body class="bg-[#120b08] text-amber-50 font-sans wood-pattern min-h-screen selection:bg-amber-600 selection:text-white">
+<body class="wood-texture text-amber-50 font-sans min-h-screen selection:bg-amber-700 selection:text-white flex flex-col justify-between">
 
-    <!-- Header / Navbar -->
-    <header class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-amber-900/40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <!-- 1. ĐẦU TRANG (Header & Hero) -->
+    <header class="relative hero-banner pt-12 pb-24 md:pt-20 md:pb-36 border-b border-amber-900/40">
+        <!-- Navigation bar -->
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between mb-16 md:mb-24">
             <div class="flex items-center space-x-3">
-                <span class="p-2.5 bg-gradient-to-br from-amber-600 to-amber-800 rounded-xl text-white shadow-lg shadow-amber-900/50">
-                    <i data-lucide="flame" class="w-6 h-6"></i>
+                <span class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-600 to-amber-900 flex items-center justify-center text-white shadow-lg shadow-amber-950/60 border border-amber-500/40">
+                    <i data-lucide="coffee" class="w-6 h-6"></i>
                 </span>
                 <div>
-                    <span class="text-xl sm:text-2xl font-extrabold tracking-wide font-serif text-amber-400">HƯƠNG ĐẠI NGÀN</span>
-                    <p class="text-xs text-amber-200/70 tracking-widest uppercase">Ẩm thực & Gia vị Tây Nguyên</p>
+                    <span class="text-2xl font-black font-serif tracking-wider text-amber-400">BAZAN ĐỎ</span>
+                    <span class="block text-[10px] tracking-widest text-amber-300/70 uppercase">Cà Phê Đất Mẹ Tây Nguyên</span>
                 </div>
             </div>
 
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
-                <a href="#about" class="text-amber-100/80 hover:text-amber-400 transition">Đặc Trưng</a>
-                <a href="#ingredients" class="text-amber-100/80 hover:text-amber-400 transition">Nguyên Liệu Đại Ngàn</a>
-                <a href="#recipes" class="text-amber-100/80 hover:text-amber-400 transition">Công Thức Chế Biến</a>
-                <a href="#interactive-kitchen" class="px-4 py-2 rounded-full bg-gradient-to-r from-amber-600 to-amber-700 text-white hover:from-amber-500 hover:to-amber-600 shadow-md shadow-amber-900/40 transition">Góc Pha Chế Vị</a>
+            <nav class="flex items-center space-x-6 text-sm font-medium">
+                <a href="#about" class="text-amber-100/80 hover:text-amber-400 transition hidden sm:inline">Về Quán</a>
+                <a href="#menu" class="text-amber-100/80 hover:text-amber-400 transition hidden sm:inline">Thực Đơn</a>
+                <a href="#contact" class="text-amber-100/80 hover:text-amber-400 transition hidden sm:inline">Liên Hệ</a>
+                <a href="#menu" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-white font-semibold text-xs tracking-wider uppercase shadow-md transition">
+                    Xem thực đơn
+                </a>
             </nav>
-
-            <button onclick="toggleMobileMenu()" class="md:hidden text-amber-200 p-2 focus:outline-none">
-                <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
-            </button>
         </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-6 space-y-3 bg-[#1C0F0A]/95 border-b border-amber-900/50">
-            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-amber-200 hover:text-amber-400">Đặc Trưng Vị Giác</a>
-            <a href="#ingredients" onclick="toggleMobileMenu()" class="block py-2 text-amber-200 hover:text-amber-400">Nguyên Liệu Bản Địa</a>
-            <a href="#recipes" onclick="toggleMobileMenu()" class="block py-2 text-amber-200 hover:text-amber-400">Công Thức Món</a>
-            <a href="#interactive-kitchen" onclick="toggleMobileMenu()" class="block py-2 text-amber-400 font-semibold">Góc Phối Trộn Gia Vị</a>
+        <!-- Hero Content -->
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-amber-950/70 border border-amber-500/30 text-amber-300 text-xs font-semibold mb-6">
+                <i data-lucide="mountain" class="w-4 h-4 text-amber-400"></i>
+                <span>Tây Nguyên Bạt Ngàn • Hương Vị Đất Đỏ</span>
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-serif font-black text-white tracking-tight leading-tight mb-6">
+                Quán Cà Phê <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-300 to-amber-500">Bazan Đỏ</span>
+            </h1>
+
+            <p class="text-lg sm:text-2xl text-amber-200/90 font-serif italic max-w-2xl mx-auto mb-10">
+                "Nơi giọt đắng thảo nguyên đánh thức tâm hồn bạn giữa đại ngàn lộng gió."
+            </p>
+
+            <div>
+                <a href="#menu" class="inline-flex items-center space-x-3 px-8 py-4 rounded-xl bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700 hover:from-amber-500 hover:to-orange-500 text-white text-base font-bold shadow-xl shadow-amber-950/70 transition transform hover:-translate-y-0.5">
+                    <span>Xem thực đơn</span>
+                    <i data-lucide="arrow-down" class="w-5 h-5"></i>
+                </a>
+            </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero-gradient pt-36 pb-24 lg:pt-48 lg:pb-36 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="max-w-3xl">
-                <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-900/60 border border-amber-500/30 text-amber-300 text-xs sm:text-sm font-medium mb-6">
-                    <i data-lucide="sparkles" class="w-4 h-4"></i>
-                    <span>Tinh hoa nguyên liệu & hương vị đất đỏ bazan</span>
+    <!-- 2. GIỚI THIỆU NGẮN VỀ QUÁN -->
+    <section id="about" class="py-20 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="glass-box p-8 sm:p-12 rounded-3xl relative overflow-hidden border border-amber-600/30 shadow-2xl">
+                <div class="absolute -top-12 -right-12 w-48 h-48 bg-amber-600/10 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div class="flex items-center space-x-3 mb-6">
+                    <span class="h-px w-10 bg-amber-500"></span>
+                    <span class="text-xs uppercase tracking-widest font-bold text-amber-400">Câu Chuyện Của Quán</span>
                 </div>
-                <h1 class="text-4xl sm:text-6xl font-serif font-extrabold leading-tight text-white mb-6">
-                    Chạm Vào Vị Cay Nồng, Đậm Sâu Của <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-300 to-amber-500">Núi Rừng Tây Nguyên</span>
-                </h1>
-                <p class="text-lg sm:text-xl text-amber-100/80 mb-8 font-light leading-relaxed">
-                    Khám phá kho tàng gia vị độc nhất vô nhị từ Hạt Kơ-nia, Tiêu Rừng, Hạt Dổi nướng than hồng đến Muối Kiến Vàng chua thanh Krông Pa cùng những công thức nấu nướng truyền đời của đồng bào Ê-đê, Ba-na, Mnông.
+
+                <h2 class="text-2xl sm:text-3xl font-serif font-bold text-white mb-6 leading-snug">
+                    Hồn Của Đất Rừng Trong Từng Tách Cà Phê
+                </h2>
+
+                <p class="text-base sm:text-lg text-amber-100/90 leading-relaxed font-light">
+                    Tọa lạc giữa triền đồi đất đỏ bazan màu mỡ của đại ngàn Tây Nguyên, <strong>Bazan Đỏ</strong> là không gian mộc mạc gìn giữ tinh hoa của những hạt cà phê Robusta và Arabica chín cây được hái thủ công và rang mộc nguyên bản. Đến với quán, bạn không chỉ thưởng thức hương vị cà phê đậm đà thuần chất mà còn được thả hồn vào thanh âm cồng chiêng, tiếng thông reo và làn gió cao nguyên trong lành.
                 </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#ingredients" class="px-7 py-3.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-semibold flex items-center space-x-2 shadow-xl shadow-amber-950/60 transition">
-                        <span>Khám Phá Gia Vị</span>
-                        <i data-lucide="arrow-down-right" class="w-5 h-5"></i>
-                    </a>
-                    <a href="#recipes" class="px-7 py-3.5 rounded-xl glass-card hover:bg-amber-900/40 text-amber-200 font-semibold flex items-center space-x-2 transition">
-                        <span>Học Công Thức Nấu</span>
-                    </a>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 1: Triết lý hương vị -->
-    <section id="about" class="py-20 border-t border-amber-900/40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- 3. THỰC ĐƠN 6 MÓN -->
+    <section id="menu" class="py-20 bg-bazan-950/80 border-y border-amber-900/40">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
             <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-amber-500 font-semibold tracking-wider uppercase text-xs">Triết Lý Ẩm Thực</span>
-                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-amber-100 mt-2">Bốn Tầng Vị Giác Giữa Đại Ngàn</h2>
-                <div class="w-20 h-1 bg-amber-600 mx-auto mt-4 rounded-full"></div>
+                <span class="text-xs uppercase tracking-widest font-bold text-amber-400">Hương Vị Đặc Trưng</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mt-2">Thực Đơn Bazan Đỏ</h2>
+                <div class="w-16 h-1 bg-amber-600 mx-auto mt-4 rounded-full"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <div class="glass-card p-6 rounded-2xl border-t-2 border-t-red-500 hover:translate-y-[-4px] transition duration-300">
-                    <div class="w-12 h-12 rounded-xl bg-red-950/80 text-red-400 flex items-center justify-center mb-4">
-                        <i data-lucide="flame" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-amber-100 mb-2">Cay Nồng Tê Lưỡi</h3>
-                    <p class="text-sm text-amber-200/70 leading-relaxed">
-                        Ớt hiểm rừng (ớt sim xiêm) giã cùng muối hạt hột to, tạo độ cay bùng nổ, xua tan cái lạnh sương mù và giữ ấm cơ thể giữa rừng thiêng.
-                    </p>
-                </div>
-
-                <div class="glass-card p-6 rounded-2xl border-t-2 border-t-amber-500 hover:translate-y-[-4px] transition duration-300">
-                    <div class="w-12 h-12 rounded-xl bg-amber-950/80 text-amber-400 flex items-center justify-center mb-4">
-                        <i data-lucide="sparkle" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-amber-100 mb-2">Chua Tự Nhiên</h3>
-                    <p class="text-sm text-amber-200/70 leading-relaxed">
-                        Vị chua thanh tự nhiên từ kiến vàng rừng rậm, lá giang, lá bép chua dịu mát lành, cân bằng vị giác béo bùi của thịt săn.
-                    </p>
-                </div>
-
-                <div class="glass-card p-6 rounded-2xl border-t-2 border-t-emerald-500 hover:translate-y-[-4px] transition duration-300">
-                    <div class="w-12 h-12 rounded-xl bg-emerald-950/80 text-emerald-400 flex items-center justify-center mb-4">
-                        <i data-lucide="coffee" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-amber-100 mb-2">Đắng Hậu Ngọt</h3>
-                    <p class="text-sm text-amber-200/70 leading-relaxed">
-                        Vị đắng thuần khiết của cà đắng gai, lá mì (lá sắn) hay đọt mây nướng; lúc đầu nhăn mặt nhưng dư vị ngọt hậu đọng lại sâu lắng.
-                    </p>
-                </div>
-
-                <div class="glass-card p-6 rounded-2xl border-t-2 border-t-orange-500 hover:translate-y-[-4px] transition duration-300">
-                    <div class="w-12 h-12 rounded-xl bg-orange-950/80 text-orange-400 flex items-center justify-center mb-4">
-                        <i data-lucide="nut" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-amber-100 mb-2">Béo Bùi Hạt Rừng</h3>
-                    <p class="text-sm text-amber-200/70 leading-relaxed">
-                        Hạt dổi nướng thơm mùi gỗ mục, hạt kơ-nia đập vỏ béo ngậy hơn hạnh nhân, hoà quyện tạo nên cốt cách ẩm thực núi cao.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 2: Nguyên liệu & Gia vị đặc trưng (Filterable) -->
-    <section id="ingredients" class="py-20 bg-[#0e0705]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
-                <div>
-                    <span class="text-amber-500 font-semibold tracking-wider uppercase text-xs">Báu Vật Của Mẹ Rừng</span>
-                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-amber-100 mt-2">Nguyên Liệu & Gia Vị Đặc Trưng</h2>
-                </div>
-                <div class="mt-6 md:mt-0 flex flex-wrap gap-2" id="filter-buttons">
-                    <button onclick="filterIngredients('all')" class="ingredient-btn active px-4 py-1.5 rounded-full text-xs font-semibold bg-amber-600 text-white transition">Tất Cả</button>
-                    <button onclick="filterIngredients('gia-vi')" class="ingredient-btn px-4 py-1.5 rounded-full text-xs font-semibold glass-card text-amber-300 hover:bg-amber-800/40 transition">Gia Vị Chấm / Ướp</button>
-                    <button onclick="filterIngredients('hat-rung')" class="ingredient-btn px-4 py-1.5 rounded-full text-xs font-semibold glass-card text-amber-300 hover:bg-amber-800/40 transition">Hạt Rừng Bản Địa</button>
-                    <button onclick="filterIngredients('rau-rung')" class="ingredient-btn px-4 py-1.5 rounded-full text-xs font-semibold glass-card text-amber-300 hover:bg-amber-800/40 transition">Rau Rừng Độc Đáo</button>
-                </div>
-            </div>
-
-            <!-- Grid Items -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="ingredients-grid">
-                <!-- Hạt Dổi -->
-                <div class="ingredient-card glass-card rounded-2xl overflow-hidden group hover:border-amber-500/50 transition duration-300" data-cat="gia-vi hat-rung">
-                    <div class="h-48 overflow-hidden relative">
-                        <img src="images/hat_doi.jpg" alt="Hạt Dổi Rừng" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <span class="absolute top-3 left-3 bg-amber-900/90 text-amber-300 text-xs px-2.5 py-1 rounded-md font-medium border border-amber-500/30">Vàng Đen Gia Vị</span>
-                    </div>
-                    <div class="p-5">
-                        <h3 class="text-xl font-bold text-amber-100 mb-1">Hạt Dổi Rừng</h3>
-                        <p class="text-xs text-amber-400 font-medium mb-3">Tên địa phương: Dổi Mác Khén Tây Nguyên</p>
-                        <p class="text-sm text-amber-200/70 mb-4 line-clamp-3">Được nướng trên than hồng cho đến khi phồng rộp dậy mùi thơm ngào ngạt tựa thảo quả pha tinh dầu thông, dùng giã muối ớt chấm thịt gà, thịt bò nướng.</p>
-                        <div class="border-t border-amber-900/40 pt-3 flex items-center justify-between text-xs text-amber-300/80">
-                            <span>Đặc trưng: Thơm đượm, ấm nồng</span>
+            <!-- Grid 6 món -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <!-- Món 1 -->
+                <div class="glass-box p-6 rounded-2xl border border-amber-700/30 hover:border-amber-500/60 transition duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-start justify-between mb-3">
+                            <span class="p-3 rounded-xl bg-amber-950/80 text-amber-400 group-hover:scale-110 transition duration-300">
+                                <i data-lucide="coffee" class="w-6 h-6"></i>
+                            </span>
+                            <span class="text-lg font-bold text-amber-400 font-serif">35.000 VNĐ</span>
                         </div>
+                        <h3 class="text-xl font-bold font-serif text-white mb-2">Cà Phê Phin Robusta Buôn Ma Thuột</h3>
+                        <p class="text-sm text-amber-200/75 leading-relaxed">Cà phê phin truyền thống rang mộc, vị đắng đậm đà quyện chút hậu ngọt tự nhiên khó phai.</p>
                     </div>
                 </div>
 
-                <!-- Muối Kiến Vàng -->
-                <div class="ingredient-card glass-card rounded-2xl overflow-hidden group hover:border-amber-500/50 transition duration-300" data-cat="gia-vi">
-                    <div class="h-48 overflow-hidden relative">
-                        <img src="images/muoi_kien_vang.jpg" alt="Muối Kiến Vàng" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <span class="absolute top-3 left-3 bg-red-950/90 text-red-300 text-xs px-2.5 py-1 rounded-md font-medium border border-red-500/30">Đặc sản Krông Pa</span>
-                    </div>
-                    <div class="p-5">
-                        <h3 class="text-xl font-bold text-amber-100 mb-1">Muối Kiến Vàng</h3>
-                        <p class="text-xs text-amber-400 font-medium mb-3">Tổ kiến rừng rậm Ayun Pa - Gia Lai</p>
-                        <p class="text-sm text-amber-200/70 mb-4 line-clamp-3">Kiến vàng sống trên các cây cao được bắt về, rang chín giã cùng muối hột, ớt hiểm xanh và lá én rừng. Có vị chua tự nhiên từ axit formic của kiến, vị cay mặn béo ngậy khó cưỡng.</p>
-                        <div class="border-t border-amber-900/40 pt-3 flex items-center justify-between text-xs text-amber-300/80">
-                            <span>Cặp bài trùng: Bò một nắng</span>
+                <!-- Món 2 -->
+                <div class="glass-box p-6 rounded-2xl border border-amber-700/30 hover:border-amber-500/60 transition duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-start justify-between mb-3">
+                            <span class="p-3 rounded-xl bg-amber-950/80 text-amber-400 group-hover:scale-110 transition duration-300">
+                                <i data-lucide="sparkles" class="w-6 h-6"></i>
+                            </span>
+                            <span class="text-lg font-bold text-amber-400 font-serif">45.000 VNĐ</span>
                         </div>
+                        <h3 class="text-xl font-bold font-serif text-white mb-2">Cà Phê Muối Bazan</h3>
+                        <p class="text-sm text-amber-200/75 leading-relaxed">Lớp kem muối béo mặn mượt mà kết hợp hài hòa cùng vị cà phê đắng nồng của đất đỏ.</p>
                     </div>
                 </div>
 
-                <!-- Hạt Kơ-nia -->
-                <div class="ingredient-card glass-card rounded-2xl overflow-hidden group hover:border-amber-500/50 transition duration-300" data-cat="hat-rung">
-                    <div class="h-48 overflow-hidden relative">
-                        <img src="images/hat_ko_nia.jpg" alt="Hạt Kơ-nia" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <span class="absolute top-3 left-3 bg-amber-950/90 text-amber-300 text-xs px-2.5 py-1 rounded-md font-medium border border-amber-500/30">Linh hồn bài ca Kơ-nia</span>
-                    </div>
-                    <div class="p-5">
-                        <h3 class="text-xl font-bold text-amber-100 mb-1">Hạt Cây Kơ-Nia</h3>
-                        <p class="text-xs text-amber-400 font-medium mb-3">Biểu tượng sức sống đại ngàn</p>
-                        <p class="text-sm text-amber-200/70 mb-4 line-clamp-3">Quả rụng nhặt về đập lớp vỏ gỗ cứng như đá lấy nhân hạt trắng muốt. Khi nướng lên có vị bùi béo tự nhiên đặc biệt, chứa lượng dầu thực vật cao và rất thơm giòn.</p>
-                        <div class="border-t border-amber-900/40 pt-3 flex items-center justify-between text-xs text-amber-300/80">
-                            <span>Cách dùng: Ăn sống, rang muối, giã canh</span>
+                <!-- Món 3 -->
+                <div class="glass-box p-6 rounded-2xl border border-amber-700/30 hover:border-amber-500/60 transition duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-start justify-between mb-3">
+                            <span class="p-3 rounded-xl bg-amber-950/80 text-amber-400 group-hover:scale-110 transition duration-300">
+                                <i data-lucide="sun" class="w-6 h-6"></i>
+                            </span>
+                            <span class="text-lg font-bold text-amber-400 font-serif">48.000 VNĐ</span>
                         </div>
+                        <h3 class="text-xl font-bold font-serif text-white mb-2">Arabica Cầu Đất Ủ Lạnh (Cold Brew)</h3>
+                        <p class="text-sm text-amber-200/75 leading-relaxed">Ủ lạnh 16 tiếng mang lại hương thơm hoa quả rừng thoang thoảng và vị chua thanh tao nhã.</p>
                     </div>
                 </div>
 
-                <!-- Cà Đắng -->
-                <div class="ingredient-card glass-card rounded-2xl overflow-hidden group hover:border-amber-500/50 transition duration-300" data-cat="rau-rung">
-                    <div class="h-48 overflow-hidden relative">
-                        <img src="images/ca_dang.jpg" alt="Cà Đắng Rừng" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <span class="absolute top-3 left-3 bg-emerald-950/90 text-emerald-300 text-xs px-2.5 py-1 rounded-md font-medium border border-emerald-500/30">Vị thuốc tự nhiên</span>
-                    </div>
-                    <div class="p-5">
-                        <h3 class="text-xl font-bold text-amber-100 mb-1">Cà Đắng Sọc Rừng</h3>
-                        <p class="text-xs text-amber-400 font-medium mb-3">Món quen trong bữa cơm Ê-đê</p>
-                        <p class="text-sm text-amber-200/70 mb-4 line-clamp-3">Trái cà mọc hoang rải rác trên rẫy đồi, quả nhỏ tròn xanh mọc thành chùm có gai. Khi nấu với cá khô, thịt ếch hay ốc suối, vị đắng gắt ban đầu sẽ chuyển sang ngọt thanh sâu sắc.</p>
-                        <div class="border-t border-amber-900/40 pt-3 flex items-center justify-between text-xs text-amber-300/80">
-                            <span>Món đặc trưng: Cà đắng um lươn, cá trích</span>
+                <!-- Món 4 -->
+                <div class="glass-box p-6 rounded-2xl border border-amber-700/30 hover:border-amber-500/60 transition duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-start justify-between mb-3">
+                            <span class="p-3 rounded-xl bg-amber-950/80 text-amber-400 group-hover:scale-110 transition duration-300">
+                                <i data-lucide="milk" class="w-6 h-6"></i>
+                            </span>
+                            <span class="text-lg font-bold text-amber-400 font-serif">40.000 VNĐ</span>
                         </div>
+                        <h3 class="text-xl font-bold font-serif text-white mb-2">Bạc Xỉu Sữa Hạt Kơ-Nia</h3>
+                        <p class="text-sm text-amber-200/75 leading-relaxed">Hương cà phê dịu nhẹ hòa cùng sữa hạt kơ-nia rừng giã nhuyễn thơm bùi béo ngậy.</p>
                     </div>
                 </div>
-            </div>
-                            <span>Món đặc trưng: Cà đắng um lươn, cá trích</span>
+
+                <!-- Món 5 -->
+                <div class="glass-box p-6 rounded-2xl border border-amber-700/30 hover:border-amber-500/60 transition duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-start justify-between mb-3">
+                            <span class="p-3 rounded-xl bg-amber-950/80 text-amber-400 group-hover:scale-110 transition duration-300">
+                                <i data-lucide="flower" class="w-6 h-6"></i>
+                            </span>
+                            <span class="text-lg font-bold text-amber-400 font-serif">42.000 VNĐ</span>
                         </div>
+                        <h3 class="text-xl font-bold font-serif text-white mb-2">Trà Cascara Hoa Cà Phê</h3>
+                        <p class="text-sm text-amber-200/75 leading-relaxed">Trà ủ từ vỏ quả cà phê chín mọng ngọt thanh mát dịu, giàu chất chống oxy hóa.</p>
+                    </div>
+                </div>
+
+                <!-- Món 6 -->
+                <div class="glass-box p-6 rounded-2xl border border-amber-700/30 hover:border-amber-500/60 transition duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-start justify-between mb-3">
+                            <span class="p-3 rounded-xl bg-amber-950/80 text-amber-400 group-hover:scale-110 transition duration-300">
+                                <i data-lucide="flame" class="w-6 h-6"></i>
+                            </span>
+                            <span class="text-lg font-bold text-amber-400 font-serif">50.000 VNĐ</span>
+                        </div>
+                        <h3 class="text-xl font-bold font-serif text-white mb-2">Cacao Nóng Lắk Mật Ong Rừng</h3>
+                        <p class="text-sm text-amber-200/75 leading-relaxed">Cacao nguyên chất vùng Đắk Lắk ngọt đằm nhờ mật ong rừng, sưởi ấm những chiều se lạnh.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 3: Công Thức Chế Biến Chi Tiết (Tabs / Step-by-step) -->
-    <section id="recipes" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-amber-500 font-semibold tracking-wider uppercase text-xs">Cẩm Nang Bếp Rừng</span>
-                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-amber-100 mt-2">Công Thức Chế Biến Truyền Đời</h2>
-                <p class="text-sm text-amber-200/70 mt-3">Chọn công thức bên dưới để xem chi tiết cách ướp gia vị và từng bước nấu chuẩn bản làng.</p>
-            </div>
-
-            <!-- Recipe Selector Bar -->
-            <div class="flex overflow-x-auto space-x-3 pb-4 mb-8 justify-start lg:justify-center no-scrollbar" id="recipe-nav">
-                <button onclick="selectRecipe(0)" class="recipe-tab px-6 py-3 rounded-xl font-semibold text-sm whitespace-nowrap bg-amber-600 text-white shadow-lg transition">Gà Nướng Muối Ớt Hạt Dổi</button>
-                <button onclick="selectRecipe(1)" class="recipe-tab px-6 py-3 rounded-xl font-semibold text-sm whitespace-nowrap glass-card text-amber-200 hover:bg-amber-900/40 transition">Cơm Lam Nướng Ống Nứa</button>
-                <button onclick="selectRecipe(2)" class="recipe-tab px-6 py-3 rounded-xl font-semibold text-sm whitespace-nowrap glass-card text-amber-200 hover:bg-amber-900/40 transition">Cà Đắng Om Cá Trích Rừng</button>
-                <button onclick="selectRecipe(3)" class="recipe-tab px-6 py-3 rounded-xl font-semibold text-sm whitespace-nowrap glass-card text-amber-200 hover:bg-amber-900/40 transition">Canh Thục (Canh Ống Lồ Ô)</button>
-            </div>
-
-            <!-- Dynamic Recipe Card -->
-            <div id="recipe-content" class="glass-card rounded-3xl p-6 sm:p-10 border border-amber-600/30">
-                <!-- Javascript will render recipe detail here -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 4: Trải nghiệm tương tác - Phối Trộn Gia Vị Bản Địa -->
-    <section id="interactive-kitchen" class="py-20 bg-gradient-to-b from-[#0e0705] to-[#120b08] border-t border-amber-900/40">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <span class="text-amber-500 font-semibold tracking-wider uppercase text-xs">Góc Tương Tác Trực Tuyến</span>
-                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-amber-100 mt-2">Bàn Pha Chế Chén Muối Chấm Tây Nguyên</h2>
-                <p class="text-sm text-amber-200/70 mt-2">Chọn các thành phần gia vị bên dưới để cối đá ảo tự động giã nhuyễn và chấm điểm món ăn tương thích nhất!</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center glass-card p-6 sm:p-10 rounded-3xl">
-                <!-- Ingredients selector -->
-                <div>
-                    <h3 class="text-lg font-bold text-amber-300 mb-4 flex items-center space-x-2">
-                        <i data-lucide="utensils" class="w-5 h-5"></i>
-                        <span>Thêm thành phần vào Cối Đá:</span>
-                    </h3>
-
-                    <div class="space-y-3" id="mortar-ingredients">
-                        <label class="flex items-center justify-between p-3.5 rounded-xl bg-amber-950/40 border border-amber-900/60 cursor-pointer hover:border-amber-500 transition">
-                            <span class="flex items-center space-x-3">
-                                <input type="checkbox" value="muoi-hot" checked class="form-checkbox text-amber-600 rounded bg-stone-900 border-amber-700 w-5 h-5" onchange="updateMixResult()">
-                                <span class="font-medium text-amber-100">Muối hạt rang giòn</span>
-                            </span>
-                            <span class="text-xs text-amber-400">Vị mặn mộc</span>
-                        </label>
-
-                        <label class="flex items-center justify-between p-3.5 rounded-xl bg-amber-950/40 border border-amber-900/60 cursor-pointer hover:border-amber-500 transition">
-                            <span class="flex items-center space-x-3">
-                                <input type="checkbox" value="ot-hiem" checked class="form-checkbox text-amber-600 rounded bg-stone-900 border-amber-700 w-5 h-5" onchange="updateMixResult()">
-                                <span class="font-medium text-amber-100">Ớt hiểm xanh (ớt bay)</span>
-                            </span>
-                            <span class="text-xs text-red-400">Cay xé lưỡi</span>
-                        </label>
-
-                        <label class="flex items-center justify-between p-3.5 rounded-xl bg-amber-950/40 border border-amber-900/60 cursor-pointer hover:border-amber-500 transition">
-                            <span class="flex items-center space-x-3">
-                                <input type="checkbox" value="hat-doi" class="form-checkbox text-amber-600 rounded bg-stone-900 border-amber-700 w-5 h-5" onchange="updateMixResult()">
-                                <span class="font-medium text-amber-100">Hạt dổi nướng thơm</span>
-                            </span>
-                            <span class="text-xs text-orange-400">Hương gỗ rừng</span>
-                        </label>
-
-                        <label class="flex items-center justify-between p-3.5 rounded-xl bg-amber-950/40 border border-amber-900/60 cursor-pointer hover:border-amber-500 transition">
-                            <span class="flex items-center space-x-3">
-                                <input type="checkbox" value="kien-vang" class="form-checkbox text-amber-600 rounded bg-stone-900 border-amber-700 w-5 h-5" onchange="updateMixResult()">
-                                <span class="font-medium text-amber-100">Kiến vàng Krông Pa</span>
-                            </span>
-                            <span class="text-xs text-amber-300">Chua béo tự nhiên</span>
-                        </label>
-
-                        <label class="flex items-center justify-between p-3.5 rounded-xl bg-amber-950/40 border border-amber-900/60 cursor-pointer hover:border-amber-500 transition">
-                            <span class="flex items-center space-x-3">
-                                <input type="checkbox" value="la-en" class="form-checkbox text-amber-600 rounded bg-stone-900 border-amber-700 w-5 h-5" onchange="updateMixResult()">
-                                <span class="font-medium text-amber-100">Lá én rừng thái nhuyễn</span>
-                            </span>
-                            <span class="text-xs text-emerald-400">Hăng nồng the mát</span>
-                        </label>
-                    </div>
+    <!-- 4. FORM LIÊN HỆ & ĐỂ LẠI LỜI NHẮN -->
+    <section id="contact" class="py-20">
+        <div class="max-w-2xl mx-auto px-4 sm:px-6">
+            <div class="glass-box p-8 sm:p-10 rounded-3xl border border-amber-600/30 shadow-2xl">
+                <div class="text-center mb-8">
+                    <span class="text-xs uppercase tracking-widest font-bold text-amber-400">Gặp Gỡ & Kết Nối</span>
+                    <h2 class="text-2xl sm:text-3xl font-serif font-bold text-white mt-1">Để Lại Lời Nhắn Cho Bazan Đỏ</h2>
+                    <p class="text-sm text-amber-200/70 mt-2">Bạn cần đặt bàn trước, hỏi về cà phê hạt hay có điều gì muốn gửi gắm?</p>
                 </div>
 
-                <!-- Mortar visual & Result -->
-                <div class="bg-[#190d07] border border-amber-800/40 rounded-2xl p-6 text-center">
-                    <div class="w-24 h-24 mx-auto mb-4 bg-gradient-to-tr from-stone-800 to-amber-950 rounded-full flex items-center justify-center shadow-inner border-4 border-stone-700">
-                        <i data-lucide="cookie" class="w-12 h-12 text-amber-500"></i>
+                <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-5">
+                    <!-- Họ tên -->
+                    <div>
+                        <label for="fullname" class="block text-xs font-semibold uppercase tracking-wider text-amber-200 mb-2">Họ tên của bạn</label>
+                        <input type="text" id="fullname" required placeholder="Ví dụ: Nguyễn Văn A" class="w-full px-4 py-3.5 rounded-xl bg-bazan-950/90 border border-amber-900/60 text-white placeholder-stone-500 focus:outline-none focus:border-amber-500 transition text-sm">
                     </div>
 
-                    <h4 class="text-lg font-serif font-bold text-amber-200" id="mix-title">Chén Muối Ớt Rừng Nguyên Bản</h4>
-                    <p class="text-xs text-amber-300/80 mt-1 mb-4" id="mix-description">Độ cay: 🌶️🌶️🌶️🌶️ | Độ thơm: 🌟🌟</p>
-
-                    <div class="bg-amber-950/60 rounded-xl p-4 text-left border border-amber-800/50">
-                        <span class="text-xs font-semibold text-amber-400 uppercase tracking-wider block mb-1">Món ăn kết hợp hoàn hảo nhất:</span>
-                        <p class="text-sm font-bold text-white flex items-center space-x-2" id="mix-pairing">
-                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
-                            <span>Thịt gà thả đồi luộc lá giang, cơm lam nướng</span>
-                        </p>
+                    <!-- Email -->
+                    <div>
+                        <label for="email" class="block text-xs font-semibold uppercase tracking-wider text-amber-200 mb-2">Địa chỉ Email</label>
+                        <input type="email" id="email" required placeholder="name@example.com" class="w-full px-4 py-3.5 rounded-xl bg-bazan-950/90 border border-amber-900/60 text-white placeholder-stone-500 focus:outline-none focus:border-amber-500 transition text-sm">
                     </div>
 
-                    <button onclick="shareRecipeAlert()" class="mt-5 w-full py-2.5 rounded-xl bg-amber-700 hover:bg-amber-600 text-white text-xs font-semibold tracking-wide transition flex items-center justify-center space-x-2">
-                        <i data-lucide="bookmark" class="w-4 h-4"></i>
-                        <span>Lưu Tỉ Lệ Phối Này</span>
+                    <!-- Lời nhắn -->
+                    <div>
+                        <label for="message" class="block text-xs font-semibold uppercase tracking-wider text-amber-200 mb-2">Lời nhắn</label>
+                        <textarea id="message" rows="4" required placeholder="Nhập lời nhắn, ý kiến đóng góp hoặc yêu cầu đặt bàn..." class="w-full px-4 py-3.5 rounded-xl bg-bazan-950/90 border border-amber-900/60 text-white placeholder-stone-500 focus:outline-none focus:border-amber-500 transition text-sm resize-none"></textarea>
+                    </div>
+
+                    <!-- Nút Gửi -->
+                    <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700 hover:from-amber-500 hover:to-orange-500 text-white font-bold text-sm uppercase tracking-wider shadow-lg shadow-amber-950/60 transition flex items-center justify-center space-x-2">
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                        <span>Gửi Lời Nhắn</span>
                     </button>
+
+                    <!-- Dòng ghi chú cam kết thông tin theo yêu cầu -->
+                    <p class="text-xs text-center text-amber-300/60 italic pt-2">
+                        * Thông tin của bạn chỉ được sử dụng để quán liên hệ lại và cam kết bảo mật tuyệt đối.
+                    </p>
+                </form>
+
+                <!-- Thông báo thành công ẩn -->
+                <div id="success-box" class="hidden mt-6 p-4 rounded-xl bg-emerald-950/80 border border-emerald-500/50 text-emerald-200 text-center text-sm">
+                    <p class="font-bold flex items-center justify-center space-x-2 mb-1">
+                        <i data-lucide="check-circle" class="w-5 h-5 text-emerald-400"></i>
+                        <span>Đã nhận lời nhắn thành công!</span>
+                    </p>
+                    <p class="text-xs text-emerald-300/80">Bazan Đỏ sẽ liên hệ lại với bạn trong thời gian sớm nhất.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-basalt-900 border-t border-amber-900/50 py-12 text-center text-xs text-amber-300/60">
-        <div class="max-w-7xl mx-auto px-4 space-y-4">
-            <div class="flex justify-center items-center space-x-2 text-amber-400 font-serif font-bold text-lg">
-                <i data-lucide="flame" class="w-5 h-5 text-amber-500"></i>
-                <span>Ẩm Thực Tây Nguyên - Bản Sắc Đại Ngàn</span>
+    <!-- 5. CHÂN TRANG (Địa chỉ & Giờ mở cửa) -->
+    <footer class="bg-bazan-950 border-t border-amber-900/50 pt-12 pb-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-10 border-b border-amber-900/40">
+                <!-- Cột 1: Thông tin thương hiệu -->
+                <div>
+                    <div class="flex items-center space-x-2 mb-3">
+                        <i data-lucide="coffee" class="w-5 h-5 text-amber-500"></i>
+                        <span class="text-xl font-bold font-serif text-amber-400 tracking-wider">BAZAN ĐỎ</span>
+                    </div>
+                    <p class="text-xs text-amber-200/70 leading-relaxed font-light">
+                        Giữ trọn vị mộc mạc của hạt cà phê cao nguyên trên nền đất đỏ bazan ngàn đời.
+                    </p>
+                </div>
+
+                <!-- Cột 2: Địa chỉ -->
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-amber-300 mb-3 flex items-center space-x-2">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-amber-500"></i>
+                        <span>Địa Chỉ Quán</span>
+                    </h4>
+                    <p class="text-xs sm:text-sm text-amber-100/90 leading-relaxed">
+                        Số 48 Đinh Tiên Hoàng, Phường Tự An, TP. Buôn Ma Thuột, Tỉnh Đắk Lắk (Tây Nguyên)
+                    </p>
+                </div>
+
+                <!-- Cột 3: Giờ mở cửa -->
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-amber-300 mb-3 flex items-center space-x-2">
+                        <i data-lucide="clock" class="w-4 h-4 text-amber-500"></i>
+                        <span>Giờ Mở Cửa</span>
+                    </h4>
+                    <p class="text-xs sm:text-sm text-amber-100/90 leading-relaxed">
+                        Thứ Hai - Chủ Nhật: <strong class="text-amber-400">06:30 - 22:00</strong>
+                    </p>
+                    <p class="text-[11px] text-amber-300/60 mt-1">Phục vụ xuyên suốt các ngày lễ, Tết</p>
+                </div>
             </div>
-            <p>Dự án được xây dựng với tình yêu dành cho văn hóa và ẩm thực 5 tỉnh Tây Nguyên (Đắk Lắk, Gia Lai, Kon Tum, Lâm Đồng, Đắk Nông).</p>
-            <p>© 2026 Hương Vị Đại Ngàn. All Rights Reserved.</p>
+
+            <div class="pt-6 text-center text-xs text-amber-400/60">
+                <p>© 2026 Quán Cà Phê Bazan Đỏ - Đậm Tình Cao Nguyên. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- JavaScript Application Logic -->
     <script>
-        // Recipes Data
-        const recipesData = [
-            {
-                title: "Gà Nướng Than Củi Muối Ớt Hạt Dổi",
-                subtitle: "Đặc sản buôn Đôn - Đắk Lắk trứ danh",
-                time: "45 phút nướng",
-                servings: "3 - 4 người",
-                difficulty: "Trung bình",
-                image: "images/ga_nuong.jpg",
-                ingredients: [
-                    "1 con gà thả đồi (khoảng 1.2kg - 1.4kg) thịt chắc ngọt",
-                    "3 - 4 hạt dổi rừng Tây Nguyên",
-                    "Ớt hiểm xanh (ớt bay): 5 quả",
-                    "Muối hột hạt to: 1 muỗng canh",
-                    "Hành khô, tỏi tím, nước cốt chanh",
-                    "1 thìa mật ong rừng hoa cà phê quét da"
-                ],
-                steps: [
-                    "Hạt dổi nướng trên than hồng khoảng 1 phút đến khi tỏa mùi thơm nồng nàn và phồng lên, đem giã nhuyễn cùng ớt hiểm, muối hạt, tỏi băm.",
-                    "Gà mổ phanh theo kiểu 'ép dẹp' (để dễ kẹp thanh tre nẹp nướng đều 2 mặt), xát đều hỗn hợp muối ớt hạt dổi cả trong lẫn ngoài da gà. Ướp 30-40 phút.",
-                    "Kẹp gà vào 2 thanh tre tươi, cột chặt đầu bằng dây thép mỏng hoặc lạt giang.",
-                    "Nướng chậm trên bếp than củi đỏ rực, khoảng 15 phút đầu không quét mật ong. Khi thịt gần chín, quét nhẹ lớp mật ong hoa cà phê lên da để có màu vàng cánh gián giòn rụm.",
-                    "Thưởng thức khi nóng cùng cơm lam và chén muối hạt dổi vắt chanh."
-                ]
-            },
-            {
-                title: "Cơm Lam Ống Nứa Nướng Tro Than",
-                subtitle: "Hạt ngọc trời quyện hương tre nứa non",
-                time: "50 phút",
-                servings: "4 - 5 người",
-                difficulty: "Dễ",
-                image: "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1200&q=80",
-                ingredients: [
-                    "500g Gạo nếp nương rẫy hạt tròn mẩy",
-                    "4-5 ống nứa non hoặc ống tre còn tươi, có lớp màng lụa bên trong",
-                    "Nước suối nguồn trong hoặc nước cốt dừa loãng",
-                    "Lá chuối hoặc lá dong tươi cuộn nút ống",
-                    "Muối mè (vừng) hoặc muối đậu phộng rang giã mịn"
-                ],
-                steps: [
-                    "Gạo nếp rẫy vo sạch, ngâm nước lạnh từ 4 - 6 tiếng cho ngậm đủ nước rồi để ráo.",
-                    "Ống nứa chặt dài khoảng 30cm, giữ lại một đầu mấu làm đáy. Cho gạo nếp vào khoảng 3/4 ống (không nén quá chặt để gạo có không gian nở).",
-                    "Đổ nước suối ngập mặt gạo khoảng 1 đốt ngón tay, dùng lá chuối non cuộn chặt nút miệng ống nứa lại.",
-                    "Đưa các ống nứa nghiêng tựa vào đống than củi hồng. Liên tục xoay đều thân ống để gạo chín đều không bị cháy một bên.",
-                    "Khi ngửi thấy mùi thơm của nếp dẻo và nứa non bốc lên, ấn thấy ống mềm là cơm đã chín. Dùng dao vạt bỏ lớp vỏ cháy đen bên ngoài, chừa lại lớp màng nứa lụa trắng ngần ôm lấy cơm khi ăn."
-                ]
-            },
-            {
-                title: "Cà Đắng Nấu Cá Trích Suối",
-                subtitle: "Món ăn ấm bụng của người Ê-đê bản địa",
-                time: "30 phút",
-                servings: "3 người",
-                difficulty: "Dễ",
-                image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1200&q=80",
-                ingredients: [
-                    "300g Cà đắng rừng cắt múi cau",
-                    "150g Cá trích khô hoặc cá cơm suối tươi",
-                    "3 củ hành tím giã giập",
-                    "Ớt hiểm xanh giã nhuyễn (tùy độ cay)",
-                    "Ngò gai, lá é rừng hoặc lá hành thái nhỏ",
-                    "Gia vị: Nước mắm cá nguyên chất, bột nêm, hạt tiêu rừng"
-                ],
-                steps: [
-                    "Cà đắng rửa sạch, bổ dọc làm 4 hoặc làm 2 tùy quả lớn nhỏ, ngâm sơ qua nước muối loãng cho ráo.",
-                    "Nếu dùng cá trích khô: nướng sơ cho thơm rồi xé nhỏ. Phi thơm hành tím với chút mỡ lợn bản, cho cá vào đảo săn thơm.",
-                    "Cho cà đắng vào xào cùng cá trích khoảng 3 phút cho ngấm đều gia vị đậm đà.",
-                    "Thêm một bát nước dùng ngập xăm xắp mặt cà, đun sôi rồi hạ nhỏ lửa ninh đến khi cà đắng mềm nhừ, nước sánh lại.",
-                    "Thêm ớt hiểm giã nhuyễn và lá én rừng vào rồi tắt bếp ngay. Ăn nóng cùng cơm trắng rẫy nóng hổi."
-                ]
-            },
-            {
-                title: "Canh Thục (Nấu Trong Ống Lồ Ô)",
-                subtitle: "Đỉnh cao ẩm thực dã chiến của người M'Nông",
-                time: "40 phút",
-                servings: "4 người",
-                difficulty: "Nâng cao",
-                image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=80",
-                ingredients: [
-                    "Ống lồ ô bánh tẻ (vỏ xanh, thịt dày nhiều nước)",
-                    "Đọt mây rừng, lá bép (rau nhíp) non",
-                    "Thịt heo cỏ hoặc cá suối băm nhỏ",
-                    "Cà đắng thái hạt lựu, ớt xiêm rừng",
-                    "Một khúc củi thanh thụt (dùng thụt nát hỗn hợp)"
-                ],
-                steps: [
-                    "Sơ chế toàn bộ nguyên liệu: lá bép vò sơ, đọt mây bóc vỏ gai lấy lõi mềm thái khúc, thịt heo ướp sơ với muối ớt.",
-                    "Nhồi toàn bộ nguyên liệu xen kẽ nhau vào trong ống lồ ô, thêm một chút nước suối nguồn.",
-                    "Nút kín miệng ống bằng lá chuối rừng, đặt nghiêng trên than củi nướng như nướng cơm lam.",
-                    "Khi ống sôi và bốc khói nghi ngút, người nấu mở nút lá chuối ra, dùng một cây que thụt bằng củi thụt liên tục cho các nguyên liệu nhuyễn nát và hòa quyện vào nhau.",
-                    "Đổ ra lá chuối hoặc bát sứ: hỗn hợp sệt quánh thơm lừng, có đủ vị béo ngọt thanh cay nồng đặc sắc."
-                ]
-            }
-        ];
-
-        // Render current selected recipe
-        function selectRecipe(index) {
-            // Update button styles
-            const buttons = document.querySelectorAll('.recipe-tab');
-            buttons.forEach((btn, i) => {
-                if (i === index) {
-                    btn.className = "recipe-tab px-6 py-3 rounded-xl font-semibold text-sm whitespace-nowrap bg-amber-600 text-white shadow-lg transition";
-                } else {
-                    btn.className = "recipe-tab px-6 py-3 rounded-xl font-semibold text-sm whitespace-nowrap glass-card text-amber-200 hover:bg-amber-900/40 transition";
-                }
-            });
-
-            const r = recipesData[index];
-            const container = document.getElementById('recipe-content');
-            container.innerHTML = `
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <div class="lg:col-span-5 space-y-5">
-                        <div class="rounded-2xl overflow-hidden h-64 sm:h-80 relative border border-amber-800/40">
-                            <img src="${r.image}" alt="${r.title}" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                            <span class="absolute bottom-4 left-4 bg-amber-600/90 text-white text-xs px-3 py-1 rounded-full font-semibold">
-                                ${r.subtitle}
-                            </span>
-                        </div>
-
-                        <div class="grid grid-cols-3 gap-3 text-center">
-                            <div class="bg-amber-950/60 p-3 rounded-xl border border-amber-900/50">
-                                <span class="text-xs text-amber-400 block mb-1">Thời gian</span>
-                                <span class="text-sm font-bold text-white">${r.time}</span>
-                            </div>
-                            <div class="bg-amber-950/60 p-3 rounded-xl border border-amber-900/50">
-                                <span class="text-xs text-amber-400 block mb-1">Khẩu phần</span>
-                                <span class="text-sm font-bold text-white">${r.servings}</span>
-                            </div>
-                            <div class="bg-amber-950/60 p-3 rounded-xl border border-amber-900/50">
-                                <span class="text-xs text-amber-400 block mb-1">Độ khó</span>
-                                <span class="text-sm font-bold text-white">${r.difficulty}</span>
-                            </div>
-                        </div>
-
-                        <div class="bg-[#190d07] p-5 rounded-2xl border border-amber-800/40">
-                            <h4 class="text-base font-bold text-amber-300 mb-3 flex items-center space-x-2">
-                                <i data-lucide="shopping-bag" class="w-4 h-4"></i>
-                                <span>Nguyên Liệu Chuẩn Bị:</span>
-                            </h4>
-                            <ul class="space-y-2 text-xs sm:text-sm text-amber-100/90">
-                                ${r.ingredients.map(item => `<li class="flex items-start space-x-2"><span class="text-amber-500 font-bold">•</span><span>${item}</span></li>`).join('')}
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-7 space-y-6">
-                        <div>
-                            <h3 class="text-2xl sm:text-3xl font-serif font-bold text-white mb-2">${r.title}</h3>
-                            <p class="text-sm text-amber-300/80">${r.subtitle}</p>
-                        </div>
-
-                        <div class="space-y-4">
-                            <h4 class="text-base font-bold text-amber-300 uppercase tracking-wider text-xs">Các Bước Thực Hiện:</h4>
-                            <div class="space-y-3">
-                                ${r.steps.map((step, idx) => `
-                                    <div class="flex space-x-4 p-4 rounded-xl bg-amber-950/40 border border-amber-900/40">
-                                        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-amber-600/30 text-amber-400 border border-amber-500/50 flex items-center justify-center font-bold text-sm">
-                                            ${idx + 1}
-                                        </span>
-                                        <p class="text-sm text-amber-100/80 leading-relaxed pt-1">${step}</p>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-
-                        <div class="p-4 rounded-xl bg-gradient-to-r from-amber-950 to-[#2A1A12] border border-amber-600/30 flex items-center justify-between">
-                            <div class="flex items-center space-x-3">
-                                <i data-lucide="chef-hat" class="w-6 h-6 text-amber-400"></i>
-                                <span class="text-xs sm:text-sm text-amber-200">Mẹo nhỏ: Luôn dùng than củi rừng tự nhiên để giữ mùi khói thơm ấm áp nguyên bản.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-            lucide.createIcons();
-        }
-
-        // Ingredient Filter
-        function filterIngredients(category) {
-            const buttons = document.querySelectorAll('.ingredient-btn');
-            buttons.forEach(btn => btn.classList.remove('bg-amber-600', 'text-white'));
-            event.target.classList.add('bg-amber-600', 'text-white');
-
-            const cards = document.querySelectorAll('.ingredient-card');
-            cards.forEach(card => {
-                if (category === 'all') {
-                    card.style.display = 'block';
-                } else {
-                    const cats = card.getAttribute('data-cat') || '';
-                    if (cats.includes(category)) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                }
-            });
-        }
-
-        // Interactive Mortar Mix Logic
-        function updateMixResult() {
-            const checkboxes = document.querySelectorAll('#mortar-ingredients input[type="checkbox"]');
-            const selected = Array.from(checkboxes).filter(cb => cb.checked).map(cb => cb.value);
-
-            const title = document.getElementById('mix-title');
-            const desc = document.getElementById('mix-description');
-            const pairing = document.getElementById('mix-pairing');
-
-            if (selected.includes('kien-vang')) {
-                title.innerText = "Muối Kiến Vàng Krông Pa Chua Cay";
-                desc.innerText = "Độ cay: 🌶️🌶️🌶️ | Độ chua béo: 🍋🍋🍋 | Độ thơm: 🌟🌟🌟🌟";
-                pairing.innerHTML = `<i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i><span>Bò một nắng nướng than, thịt trâu gác bếp, xoài non rẫy</span>`;
-            } else if (selected.includes('hat-doi')) {
-                title.innerText = "Muối Ớt Hạt Dổi Thơm Nồng";
-                desc.innerText = "Độ cay: 🌶️🌶️🌶️🌶️ | Độ ấm nồng: 🌟🌟🌟🌟🌟";
-                pairing.innerHTML = `<i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i><span>Gà nướng buôn Đôn, cá tầm suối nướng muối ớt</span>`;
-            } else if (selected.includes('la-en')) {
-                title.innerText = "Muối Én Rừng Dịu Thanh";
-                desc.innerText = "Độ the mát: 🌿🌿🌿 | Độ thơm: 🌟🌟🌟";
-                pairing.innerHTML = `<i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i><span>Cá suối nướng lá lốt, măng luộc chấm muối rừng</span>`;
-            } else {
-                title.innerText = "Chén Muối Ớt Hột Dã Chiến";
-                desc.innerText = "Độ cay: 🌶️🌶️🌶️🌶️🌶️ | Đơn giản, mộc mạc";
-                pairing.innerHTML = `<i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i><span>Cơm lam nướng tro, thịt heo bản luộc</span>`;
-            }
-            lucide.createIcons();
-        }
-
-        function shareRecipeAlert() {
-            alert("Đã lưu công thức gia vị vào bộ nhớ tạm! Bạn có thể sử dụng tỉ lệ này khi ướp nướng.");
-        }
-
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-
-        // Initialize on load
+        // Khởi tạo icons
         document.addEventListener('DOMContentLoaded', () => {
-            selectRecipe(0);
             lucide.createIcons();
         });
+
+        // Xử lý gửi form
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = document.getElementById('contact-form');
+            const successBox = document.getElementById('success-box');
+
+            // Hiển thị thông báo
+            successBox.classList.remove('hidden');
+            form.reset();
+            lucide.createIcons();
+
+            // Cuộn nhẹ tới thông báo
+            successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
     </script>
 </body>
 </html>

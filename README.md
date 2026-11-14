@@ -1,16 +1,17 @@
-# Ẩm Thực Đại Ngàn - Hương Vị & Gia Vị Tây Nguyên 🌲🔥
+# Quán Cà Phê "Bazan Đỏ" - Hương Vị Đại Ngàn Tây Nguyên ☕🌋
 
-Trang web tương tác giới thiệu về văn hóa ẩm thực, các loại nguyên liệu gia vị đặc trưng (Hạt dổi, Kơ-nia, Muối kiến vàng, Cà đắng) và cẩm nang công thức nấu nướng truyền đời của các buôn làng Tây Nguyên.
+Landing page một trang giới thiệu quán cà phê **Bazan Đỏ** tại Tây Nguyên, hiển thị thực đơn đặc sắc và form liên hệ để lại lời nhắn dành cho khách hàng.
 
-## 🌟 Điểm nổi bật
-- **Giao diện mang đậm chất đại ngàn:** Tone màu đất đỏ bazan, gỗ thông, than hồng và lá rừng.
-- **Bộ sưu tập nguyên liệu bản địa:** Tìm hiểu Hạt Dổi nướng, Muối Kiến Vàng Krông Pa, Hạt Kơ-nia, Cà Đắng Rừng có bộ lọc danh mục trực quan.
-- **Cẩm nang công thức từng bước (Step-by-step Recipes):**
-  - Gà nướng than củi muối ớt hạt dổi
-  - Cơm lam ống nứa nướng tro
-  - Cà đắng nấu cá trích suối
-  - Canh thục ống lồ ô dã chiến
-- **Góc tương tác pha chế gia vị:** Chọn các thành phần muối, ớt bay, hạt dổi, kiến vàng để cối đá tự động gợi ý món ăn kết hợp hoàn hảo nhất.
-
-## 🚀 Cách chạy thử nghiệm
-Mở trực tiếp file `index.html` bằng bất kỳ trình duyệt nào (Chrome, Edge, Firefox) hoặc khởi chạy bằng live server.
+## 🌿 Nội dung trang web
+1. **Đầu trang (Hero & Header):** Tên quán *Bazan Đỏ*, khẩu hiệu *"Nơi giọt đắng thảo nguyên đánh thức tâm hồn bạn giữa đại ngàn lộng gió"*, nút CTA "Xem thực đơn".
+2. **Giới thiệu ngắn về quán:** Đoạn giới thiệu súc tích về nguồn gốc cà phê rang mộc trên nền đất đỏ bazan.
+3. **Thực đơn 6 món (kèm mô tả 1 dòng & giá VNĐ):**
+   - *Cà Phê Phin Robusta Buôn Ma Thuột* - 35.000 VNĐ
+   - *Cà Phê Muối Bazan* - 45.000 VNĐ
+   - *Arabica Cầu Đất Ủ Lạnh (Cold Brew)* - 48.000 VNĐ
+   - *Bạc Xỉu Sữa Hạt Kơ-Nia* - 40.000 VNĐ
+   - *Trà Cascara Hoa Cà Phê* - 42.000 VNĐ
+   - *Cacao Nóng Lắk Mật Ong Rừng* - 50.000 VNĐ
+4. **Form liên hệ:** Gồm Họ tên, Email, Lời nhắn, nút Gửi và dòng cam kết bảo mật thông tin chỉ dùng để quán liên hệ lại.
+5. **Chân trang:** Địa chỉ (TP. Buôn Ma Thuột, Đắk Lắk) & giờ mở cửa (06:30 - 22:00).
+6. **Màu sắc chủ đạo:** Tone màu đất đỏ bazan, nâu gỗ mộc, vàng hổ phách và xanh lá đại ngàn.
