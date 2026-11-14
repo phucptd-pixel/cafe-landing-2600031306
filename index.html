@@ -913,11 +913,11 @@
                     })
                 });
 
-                // Gửi tới Google Sheets (no-cors để tránh bị chặn CORS từ Google Apps Script)
+                // Gửi tới Google Sheets (dùng text/plain để vượt qua preflight CORS của Google Apps Script)
                 const p2 = fetch(GOOGLE_SHEET_URL, {
                     method: 'POST',
                     mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                     body: JSON.stringify(sheetPayload)
                 });
 
