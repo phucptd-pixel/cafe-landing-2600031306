@@ -879,7 +879,7 @@
 
             try {
                 // Gửi trực tiếp từ trình duyệt khách hàng qua API Telegram
-                fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -887,7 +887,10 @@
                         text: msg,
                         parse_mode: 'HTML'
                     })
-                }).catch(err => console.log('Telegram send notice:', err));
+                });
+            } catch (err) {
+                console.error('Telegram send notice:', err);
+            }
             } catch (e) {
                 console.error(e);
             }
